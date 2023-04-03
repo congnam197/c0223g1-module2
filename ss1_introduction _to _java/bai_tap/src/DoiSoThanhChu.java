@@ -1,14 +1,12 @@
 import java.util.Scanner;
 
-public class DocSoThanhChu {
+public class DoiSoThanhChu {
     public static void main(String[] args) {
-        Scanner scaner = new Scanner(System.in);
-        System.out.println("Nhập số có 3 chữ số : ");
-        int number = Integer.parseInt(scaner.nextLine());
-        if (number > 999) {
-            System.out.print("Nhâp lại");
-        } else if (number > 0 && number < 10) {
-            switch (number) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("nhập số (từ 0-999): ");
+        int numb = Integer.parseInt(scanner.nextLine());
+        if (numb > 0 && numb < 10) {
+            switch (numb) {
                 case 1:
                     System.out.print("One");
                     break;
@@ -37,10 +35,10 @@ public class DocSoThanhChu {
                     System.out.print("Nine");
                     break;
                 default:
-                    System.out.print("out of ability");
-
+                    System.out.print("Out of ability");
             }
-
-        }else if (number)
+        }else if (numb<20){
+            
+        }
     }
 }
