@@ -25,11 +25,11 @@ public class TimUocCuaMotSo {
 
         int newArray[] = new int[count];
         for (int i = 0; i < count; i++) {
-                newArray[i]=array[i];
-            }
+            newArray[i] = array[i];
+        }
         return newArray;
 
-        }
-
     }
+
+}
 

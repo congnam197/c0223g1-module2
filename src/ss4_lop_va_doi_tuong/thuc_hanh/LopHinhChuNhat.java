@@ -3,7 +3,7 @@ package ss4_lop_va_doi_tuong.thuc_hanh;
 import java.awt.*;
 import java.util.Scanner;
 
-public class LopHinhChuNhat {
+class Rectangle {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the width: ");
@@ -16,9 +16,7 @@ public class LopHinhChuNhat {
         System.out.println("Area of the Rectangle: " + rectangle.getArea());
 
     }
-}
 
-class Rectangle {
     double width, height;
 
     public Rectangle() {
