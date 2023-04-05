@@ -9,10 +9,8 @@ public class TimPhanTuLonNhatTrongMang2Chieu {
                 if (myNumbers[i][j] > max) {
                     max = myNumbers[i][j];
                 }
-
             }
-
         }
-        System.out.println("Phần tử lớn nhất trong mảng là : "+max);
+        System.out.println("Phần tử lớn nhất trong mảng là : " + max);
     }
 }
