@@ -13,7 +13,7 @@ public class IsPrime {
     }
 
     public static boolean checkIsPrime(int number) {
-        if (number < 2) {
+        if (number > 0 && number < 2) {
             return false;
         } else {
             for (int i = 2; i <= Math.sqrt(number); i++) {
