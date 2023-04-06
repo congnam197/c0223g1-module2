@@ -1,6 +1,6 @@
 package ss4_lop_va_doi_tuong.bai_tap.xay_dung_lop_fan;
 
-public class XayDungLopFan {
+class FanManagement {
 
     public static void main(String[] args) {
         Fan fan1 = new Fan();

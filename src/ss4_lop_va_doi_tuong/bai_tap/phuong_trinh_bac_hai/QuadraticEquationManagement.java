@@ -2,7 +2,7 @@ package ss4_lop_va_doi_tuong.bai_tap.phuong_trinh_bac_hai;
 
 import java.util.Scanner;
 
-class XayDungLopQuadraticEquation {
+class QuadraticEquationManagement {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập số a: ");

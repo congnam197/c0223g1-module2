@@ -1,6 +1,6 @@
 package ss4_lop_va_doi_tuong.bai_tap.xay_dung_lop_stopwatch;
 
-public class XayDungLopStopWatch {
+public class StopWatchManagement {
     public static int[] SelectionSort(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
