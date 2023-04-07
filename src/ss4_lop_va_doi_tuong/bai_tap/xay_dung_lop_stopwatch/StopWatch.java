@@ -11,6 +11,9 @@ public class StopWatch {
         this.endTime = endTime;
     }
 
+    public StopWatch(StopWatch startTime, StopWatch endTime) {
+    }
+
     public long getStarTime() {
         return starTime;
     }

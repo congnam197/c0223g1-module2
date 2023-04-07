@@ -1,5 +1,7 @@
 package ss4_lop_va_doi_tuong.bai_tap.xay_dung_lop_stopwatch;
 
+import java.util.Arrays;
+
 public class StopWatchManagement {
     public static int[] SelectionSort(int[] arr) {
         int n = arr.length;
@@ -18,18 +20,18 @@ public class StopWatchManagement {
     }
 
     public static void main(String[] args) {
-        int[] array = new int[100000];
-        for (int i = 0; i < 100000; i++) {
+        int[] array = new int[1000];
+        for (int i = 0; i < array.length; i++) {
             array[i] = (int) (Math.random() * 5500);
         }
-        long start = System.currentTimeMillis();
+        StopWatch start = new StopWatch();
+        start.start();
         SelectionSort(array);
-        long end = System.currentTimeMillis();
+        StopWatch end = new StopWatch();
+        end.end();
         StopWatch stopWatch = new StopWatch(start, end);
         System.out.println("Time: " + stopWatch.getElapsedTime());
-        for (int x : array) {
-            System.out.println(x);
-        }
+        System.out.println(Arrays.toString(array));
     }
 }
 
