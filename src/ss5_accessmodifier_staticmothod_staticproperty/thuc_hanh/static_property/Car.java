@@ -31,7 +31,7 @@ public class Car {
         return engine;
     }
 
-    public void setEngine(String engine) {
+    public void setEngine(String engine)     {
         this.engine = engine;
     }
 
@@ -39,7 +39,7 @@ public class Car {
         return numberOfCars;
     }
 
-    public static void setNumberOfCars(int numberOfCars) {
+    public static void setNumberOfCars(int numberOfCars)     {
         Car.numberOfCars = numberOfCars;
     }
 
