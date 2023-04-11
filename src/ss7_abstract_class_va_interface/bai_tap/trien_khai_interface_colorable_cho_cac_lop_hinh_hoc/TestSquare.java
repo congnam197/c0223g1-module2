@@ -2,14 +2,20 @@ package ss7_abstract_class_va_interface.bai_tap.trien_khai_interface_colorable_c
 
 public class TestSquare {
     public static void main(String[] args) {
-        Square s1 = new Square(true, 5);
-        Square s2 = new Square(10);
-        Square s3 = new Square();
-        System.out.println(s1.toString());
-        s1.howToColor();
-        System.out.println(s2.toString());
-        s2.howToColor();
-        System.out.println(s3.toString());
-        s3.howToColor();
+        Shape s1 = new Square(true, 5);
+        Shape s2 = new Rectangle(5.0, 7.8);
+        Shape s3 = new Circle(2.0);
+        Shape[] array = new Shape[3];
+        array[0] = s1;
+        array[1] = s2;
+        array[2] = s3;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] instanceof Square) {
+                System.out.println("Area : " + ((Square) array[i]).getArea());
+            }
+            if (array[i] instanceof IColorable) {
+                ((IColorable) array[i]).howToColor();
+            }
+        }
     }
 }
