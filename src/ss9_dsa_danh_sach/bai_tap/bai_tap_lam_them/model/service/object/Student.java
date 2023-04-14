@@ -41,7 +41,7 @@ public class Student extends Person {
         return "{" +
                 "classRoom='" + classRoom + '\'' +
                 ", score=" + score +
-                super.toString()+
-                '}'+"\n";
+                super.toString() +
+                '}' + "\n";
     }
 }

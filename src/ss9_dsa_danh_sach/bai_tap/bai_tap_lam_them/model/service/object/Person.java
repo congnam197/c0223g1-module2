@@ -54,9 +54,9 @@ public abstract class Person {
     public String toString() {
         return
                 "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", Gender='" + Gender + '\'';
+                        ", name='" + name + '\'' +
+                        ", dateOfBirth=" + dateOfBirth +
+                        ", Gender='" + Gender + '\'';
     }
 }
 

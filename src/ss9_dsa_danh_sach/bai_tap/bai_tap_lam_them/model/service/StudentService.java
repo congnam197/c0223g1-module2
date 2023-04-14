@@ -36,9 +36,9 @@ public class StudentService implements IPersonRepository {
     @Override
     public void removePersonRepository() {
         System.out.println("Nhập mã học viên muốn xóa");
-        String nameStudent=sc.nextLine();
+        String nameStudent = sc.nextLine();
         for (int i = 0; i < studentArrayList.size(); i++) {
-            if (nameStudent.equals(studentArrayList.get(i).getName())){
+            if (nameStudent.equals(studentArrayList.get(i).getName())) {
                 studentArrayList.remove(i);
                 System.out.println("đã xóa thành công");
             }
