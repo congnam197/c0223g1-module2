@@ -1,4 +1,6 @@
-package ss9_dsa_danh_sach.bai_tap.bai_tap_lam_them.model.object;
+package ss9_dsa_danh_sach.bai_tap.bai_tap_lam_them.model;
+
+import ss9_dsa_danh_sach.bai_tap.bai_tap_lam_them.model.Person;
 
 public class Student extends Person {
     private String classRoom;

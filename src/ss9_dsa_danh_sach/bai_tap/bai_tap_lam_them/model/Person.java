@@ -1,4 +1,4 @@
-package ss9_dsa_danh_sach.bai_tap.bai_tap_lam_them.model.object;
+package ss9_dsa_danh_sach.bai_tap.bai_tap_lam_them.model;
 
 public abstract class Person {
     private int id;

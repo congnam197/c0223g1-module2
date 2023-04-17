@@ -1,6 +1,6 @@
 package ss9_dsa_danh_sach.bai_tap.bai_tap_lam_them.model.service;
 
-import ss9_dsa_danh_sach.bai_tap.bai_tap_lam_them.model.object.Student;
+import ss9_dsa_danh_sach.bai_tap.bai_tap_lam_them.model.Student;
 import ss9_dsa_danh_sach.bai_tap.bai_tap_lam_them.model.repositoty.IPersonRepository;
 import ss9_dsa_danh_sach.bai_tap.bai_tap_lam_them.model.repositoty.IStudentRepository;
 import ss9_dsa_danh_sach.bai_tap.bai_tap_lam_them.model.repositoty.StudenRepository;
