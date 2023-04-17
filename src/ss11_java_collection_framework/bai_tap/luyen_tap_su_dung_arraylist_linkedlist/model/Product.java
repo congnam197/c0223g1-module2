@@ -1,4 +1,4 @@
-package ss11_java_collection_framework.bai_tap.luyen_tap_su_dung_arraylist_linkedlist;
+package ss11_java_collection_framework.bai_tap.luyen_tap_su_dung_arraylist_linkedlist.model;
 
 import java.util.Comparator;
 
