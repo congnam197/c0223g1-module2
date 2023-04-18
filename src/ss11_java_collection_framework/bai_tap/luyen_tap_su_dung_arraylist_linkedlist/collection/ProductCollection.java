@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class ProductCollection {
     Scanner sc = new Scanner(System.in);
-    ProductService productService = new ProductService();
+    private ProductService productService = new ProductService();
     public void productManager() {
         System.out.println("---Quản lý  sản phẩm----");
         System.out.println("-------------------------");
