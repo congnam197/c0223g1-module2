@@ -14,7 +14,7 @@ public class CopyFile {
                 bufferedReader = new BufferedReader(fileReader);
                 String line = "";
                 while ((line = bufferedReader.readLine()) != null) {
-                    str = line;
+                    str += line + "\n";
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -42,6 +42,7 @@ public class CopyFile {
             fileWriter = new FileWriter(file, true);
             bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(string);
+            bufferedWriter.flush();
         } catch (IOException ioException) {
             ioException.printStackTrace();
         } finally {
