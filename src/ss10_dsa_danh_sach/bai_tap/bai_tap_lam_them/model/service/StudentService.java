@@ -42,7 +42,7 @@ public class StudentService implements IPersonRepository {
     public void displayPersonRepository() {
         List<Student> studentList = studentRepository.getStudentlist();
         for (Student student : studentList) {
-            System.out.println(student);
+            System.out.println(student.getFileStudent());
         }
     }
 

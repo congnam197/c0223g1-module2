@@ -5,7 +5,7 @@ public interface IProductService {
 
     void editProductById();
 
-    void displayProduc();
+    void displayProduct();
 
     void deleteProductById();
 

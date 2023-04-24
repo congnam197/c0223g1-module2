@@ -55,6 +55,10 @@ public abstract class Person {
                 ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", gender=" + gender;
     }
+
+    public String getPerson() {
+        return id + "," + name + "," + dateOfBirth + "," + gender;
+    }
 }
 
 

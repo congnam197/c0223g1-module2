@@ -15,7 +15,7 @@ public class Student extends Person {
         this.score = score;
     }
 
-    public Student() {
+    public Student(String s, String name, String dateOfBirth, boolean gender, String classRoom, double score) {
     }
 
     public String getClassRoom() {
@@ -37,9 +37,13 @@ public class Student extends Person {
     @Override
     public String toString() {
         return "Studen {" +
-                super.toString() +
+                super.toString() +","+
                 "classRoom='" + classRoom + '\'' +
                 ", score=" + score +
                 '}';
+    }
+
+    public String getFileStudent() {
+        return super.getPerson() + "," + classRoom + "," + score;
     }
 }

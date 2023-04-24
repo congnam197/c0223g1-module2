@@ -46,4 +46,10 @@ public class Product {
                 ", priceProduct=" + priceProduct +
                 '}';
     }
+
+    public String getFile() {
+        return id + "," + nameProduct + "," + priceProduct;
+
+
+    }
 }

@@ -9,11 +9,13 @@ public interface IProductRepossitory {
 
     void addNewProduct(Product product);
 
-    boolean editProductById(int id);
+    void editProductById(Product product, int index);
 
     boolean deleteProductById(int id);
 
     boolean searchProductByNameProduct(String name);
 
     void sortProduct();
+
+    int findId(int id);
 }

@@ -26,7 +26,7 @@ public class ProductCollection {
                     productService.addProduct();
                     break;
                 case "2":
-                    productService.displayProduc();
+                    productService.displayProduct();
                     break;
                 case "3":
                     productService.editProductById();
