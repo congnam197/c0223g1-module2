@@ -1,26 +1,21 @@
 package ss13_thuat_toan_sap_xep.thuc_hanh;
 
-public class BubbleSort {
-    static int[] list = {2, 3, 2, 5, 6, 1, -2, 3, 14, 12};
+import java.util.Arrays;
 
-    public static void bubbleSort(int[] list) {
-        boolean needNextPass = true;
-        for (int k = 1; k < list.length && needNextPass; k++) {
-            needNextPass = false;
-            for (int i = 0; i < list.length - k; i++) {
-                if (list[i] > list[i + 1]) {
-                    int temp = list[i];
-                    list[i] = list[i + 1];
-                    list[i + 1] = temp;
-                    needNextPass = true;
+public class BubbleSort {
+    static int[] a = {2, -1, 1, -1, 6, 4, -1, 3, 14, 12};
+
+    public static void main(String[] args) {
+        int l=a.length;
+        for (int k = 0; k < l; k++) {
+            for (int i = k; i < l; i++) {
+                if (a[k] > a[i]&& a[k]!=-1&& a[i]!=-1) {
+                    int temp = a[i];
+                    a[i] = a[k];
+                    a[k] = temp;
                 }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        bubbleSort(list);
-        for (int i = 0; i < list.length; i++)
-            System.out.print(list[i] + " ");
+        System.out.println(Arrays.toString(a));
     }
 }
