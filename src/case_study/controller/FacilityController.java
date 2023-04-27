@@ -5,8 +5,8 @@ import case_study.service.FacilityService;
 import java.util.Scanner;
 
 public class FacilityController {
-    Scanner sc= new Scanner(System.in);
-    FacilityService facilityService=new FacilityService();
+    Scanner sc = new Scanner(System.in);
+    FacilityService facilityService = new FacilityService();
 
     public void facilityManagement() {
         System.out.println("-----Facility Management-----");
@@ -21,10 +21,13 @@ public class FacilityController {
             String choice3 = sc.nextLine();
             switch (choice3) {
                 case "1":
+                    facilityService.displayList();
                     break;
                 case "2":
+                    facilityService.add();
                     break;
                 case "3":
+                    facilityService.displayMaintenance();
                     break;
                 case "4":
                     flag = false;

@@ -31,11 +31,10 @@ public class House extends Facility {
 
     @Override
     public String toString() {
-        return "House{" +
+        return "House: " +
                 super.toString() +
-                "roomStandard='" + roomStandard + '\'' +
-                ", floor=" + floor +
-                '}';
+                ", roomStandard: " + roomStandard +
+                ", floor: " + floor ;
     }
 
     public String getInfoToCSV() {

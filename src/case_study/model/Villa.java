@@ -41,12 +41,11 @@ public class Villa extends Facility {
 
     @Override
     public String toString() {
-        return "Villa{" +
+        return "Villa: " +
                 super.toString() +
-                "roomStandard='" + roomStandard + '\'' +
-                ", areaSwimmingPool=" + areaSwimmingPool +
-                ", floor=" + floor +
-                '}';
+                " ,roomStandard: " + roomStandard +
+                ", areaSwimmingPool: " + areaSwimmingPool +
+                ", floor: " + floor;
     }
 
     public String getInfoToCSV() {

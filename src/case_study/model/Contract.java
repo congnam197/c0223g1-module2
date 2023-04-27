@@ -60,13 +60,12 @@ public class Contract {
 
     @Override
     public String toString() {
-        return "Contract{" +
-                "numberContract=" + numberContract +
-                ", codeBooking='" + codeBooking + '\'' +
-                ", advanceDepositAmount=" + advanceDepositAmount +
-                ", totalPaymentAmount=" + totalPaymentAmount +
-                ", codeClient='" + codeClient + '\'' +
-                '}';
+        return "Contract: " +
+                "numberContract: " + numberContract +
+                ", codeBooking: " + codeBooking +
+                ", advanceDepositAmount: " + advanceDepositAmount +
+                ", totalPaymentAmount: " + totalPaymentAmount +
+                ", codeClient: " + codeClient;
     }
 
     public String getInfoToCSV() {

@@ -5,17 +5,17 @@ public abstract class Person {
     private String code;
     private String name;
     private String dateOfBirth;
-    private String gender;
-    private int identitCardNumber;
-    private int numberPhone;
+    private boolean gender;
+    private String identitCardNumber;
+    private String numberPhone;
     private String email;
 
 
     public Person() {
     }
 
-    public Person(String id, String name, String dateOfBirth, String gender,
-                  int identitCardNumber, int numberPhone, String email) {
+    public Person(String id, String name, String dateOfBirth, boolean gender,
+                  String identitCardNumber, String numberPhone, String email) {
         this.code = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -49,11 +49,11 @@ public abstract class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getGender() {
+    public boolean isGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(boolean gender) {
         this.gender = gender;
     }
 
@@ -65,30 +65,30 @@ public abstract class Person {
         this.email = email;
     }
 
-    public int getIdentitCardNumber() {
+    public String getIdentitCardNumber() {
         return identitCardNumber;
     }
 
-    public void setIdentitCardNumber(int identitCardNumber) {
+    public void setIdentitCardNumber(String identitCardNumber) {
         this.identitCardNumber = identitCardNumber;
     }
 
-    public int getNumberPhone() {
+    public String getNumberPhone() {
         return numberPhone;
     }
 
-    public void setNumberPhone(int numberPhone) {
+    public void setNumberPhone(String numberPhone) {
         this.numberPhone = numberPhone;
     }
 
     @Override
     public String toString() {
-        return "{" +
-                "idCustomer='" + code + '\'' +
-                ", nameCustomer='" + name + '\'' +
-                ", ageCustomer=" + dateOfBirth +
-                ", identitCardNumber='" + identitCardNumber + '\'' +
-                ", numberPhone='" + numberPhone + '\'' + ",";
+        return
+                "idCustomer :" + code +
+                        ", nameCustomer: " + name +
+                        ", dateOfBirth: " + dateOfBirth +
+                        ", identitCardNumber: " + identitCardNumber +
+                        ", numberPhone: " + numberPhone + COMMA;
     }
 
     public String showList() {

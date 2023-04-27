@@ -7,7 +7,7 @@ public class Customer extends Person {
     public Customer() {
     }
 
-    public Customer(String id, String name, String dateOfBirth, String gender, int identitCardNumber, int numberPhone, String email, String typeCustomer, String address) {
+    public Customer(String id, String name, String dateOfBirth, boolean gender, String identitCardNumber, String numberPhone, String email, String typeCustomer, String address) {
         super(id, name, dateOfBirth, gender, identitCardNumber, numberPhone, email);
         this.typeOfGuest = typeCustomer;
         this.address = address;
@@ -31,11 +31,10 @@ public class Customer extends Person {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                super.toString() + "\'" +
-                "typeCustomer=" + typeOfGuest +
-                ", address='" + address + '\'' +
-                '}';
+        return "Customer : " +
+                super.toString() +
+                ", typeCustomer: " + typeOfGuest +
+                ", address :" + address;
     }
 
     public String getInfoToCSV() {

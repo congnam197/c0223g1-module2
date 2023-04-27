@@ -24,20 +24,19 @@ public class CustomerService implements IService {
 
     @Override
     public void add() {
-        read();
-        System.out.println("Nhập mã khách hàng");
+        System.out.println("Nhập mã khách hàng KH-XXXX");
         boolean check;
-        String code = null;
+        String code ;
         do {
-            if (Regex.checkCodePerson(code) == false) {
+            code = scanner.nextLine();
+            if (Regex.checkCodeCustomer(code)) {
                 System.out.println("Mã phải đúng định dạng, vui lòng nhập lại");
                 check = true;
             } else {
-                code = scanner.nextLine();
                 check = false;
             }
-            for (int i = 0; i < customerList.size(); i++) {
-                if (code == customerList.get(i).getCode()) {
+            for (Customer customer : customerList) {
+                if (code.equals(customer.getCode())) {
                     System.out.println("mã đã tồn tại, mới nhập lại");
                     check = true;
                 }
@@ -45,26 +44,27 @@ public class CustomerService implements IService {
         } while (check);
         boolean check1;
         System.out.println("Nhập tên khách hàng");
-        String name = null;
+        String name;
         do {
+            name = scanner.nextLine();
             if (Regex.checkNamePerson(name)) {
-                name = scanner.nextLine();
+
                 check1 = false;
             } else {
                 System.out.println("Tên phải đúng định dạng, vui lòng nhập lại");
-                check1 = false;
+                check1 = true;
             }
         } while (check1);
-        System.out.println("Nhập ngày sinh (dd/mm/yyyy)");
+        System.out.println("Nhập ngày sinh (yyyy-MM-dd)");
         String dayBirth;
         boolean check2;
         do {
             dayBirth = scanner.nextLine();
             if (Regex.checkAge(dayBirth)) {
+                System.out.println(Regex.checkUnderAge(dayBirth));
                 if (Regex.checkUnderAge(dayBirth)) {
-                    check2 = false;
                     System.out.println("Đã trên 18 tuổi");
-
+                    check2 = false;
                 } else {
                     System.out.println("Chưa đủ 18 tuổi ,Vui Lòng Xác Nhận  lại");
                     check2 = true;
@@ -74,35 +74,49 @@ public class CustomerService implements IService {
                 check2 = true;
             }
         } while (check2);
-        System.out.println("Giới tính");
-        String gender = scanner.nextLine();
-
-        System.out.println("Số CMND/CCCD");
+        System.out.println("Giới tính" +
+                "1.Nam" +
+                "2.Nữ");
         boolean check3;
-        String idNumber1 = null;
+        boolean gender = false;
         do {
-            if (Regex.checkIdCard(idNumber1)) {
-                idNumber1 = scanner.nextLine();
+            String checkGender = scanner.nextLine();
+            if (checkGender.equals("1")) {
+                gender = true;
+                check3 = false;
+            } else if (checkGender.equals("2")) {
+                gender = false;
                 check3 = false;
             } else {
+                System.out.println("lựa chọn sai, mời chọn lại");
                 check3 = true;
-                System.out.println("Chưa đúng định dạng, vui lòng nhập lại");
             }
         } while (check3);
-        int idNumber = Integer.parseInt(idNumber1);
+        System.out.println("Số CMND/CCCD");
         boolean check4;
-        System.out.println("Số điện thoại");
-        String numberPhone1 = null;
+        String idNumber;
         do {
-            if (Regex.checkNumberPhone(numberPhone1)) {
-                numberPhone1 = scanner.nextLine();
+            idNumber = scanner.nextLine();
+            if (Regex.checkIdCard(idNumber)) {
                 check4 = false;
             } else {
-                System.out.println("Chưa đúng định dạng, vui lòng nhập lại");
                 check4 = true;
+                System.out.println("Chưa đúng định dạng, vui lòng nhập lại");
             }
         } while (check4);
-        int numberPhone = Integer.parseInt(numberPhone1);
+
+        boolean check5;
+        System.out.println("Số điện thoại");
+        String numberPhone;
+        do {
+            numberPhone = scanner.nextLine();
+            if (Regex.checkNumberPhone(numberPhone)) {
+                check5 = false;
+            } else {
+                System.out.println("Chưa đúng định dạng, vui lòng nhập lại");
+                check5 = true;
+            }
+        } while (check5);
         System.out.println("Email");
         String email = scanner.nextLine();
         System.out.println("Chọn loại khách hàng");
@@ -168,7 +182,7 @@ public class CustomerService implements IService {
                 boolean check;
                 String code = null;
                 do {
-                    if (Regex.checkCodePerson(code) == false) {
+                    if (Regex.checkCodeCustomer(code)) {
                         System.out.println("Mã phải đúng định dạng, vui lòng nhập lại");
                         check = true;
                     } else {
@@ -195,7 +209,7 @@ public class CustomerService implements IService {
                     }
                 } while (check1);
                 boolean check2;
-                System.out.println("Nhập ngày sinh (dd/mm/yyyy)");
+                System.out.println("Nhập ngày sinh (yyyy-MM-dd)");
                 String dayBirth;
                 do {
                     dayBirth = scanner.nextLine();
@@ -203,7 +217,6 @@ public class CustomerService implements IService {
                         if (Regex.checkUnderAge(dayBirth)) {
                             check2 = false;
                             System.out.println("Đã trên 18 tuổi");
-
                         } else {
                             System.out.println("Chưa đủ 18 tuổi ,Vui Lòng Xác Nhận  lại");
                             check2 = true;
@@ -213,37 +226,52 @@ public class CustomerService implements IService {
                         check2 = true;
                     }
                 } while (check2);
-                System.out.println("Giới tính");
-                String gender = scanner.nextLine();
+                System.out.println("Giới tính" +
+                        "1.Nam" +
+                        "2.Nữ");
                 boolean check3;
-                System.out.println("Số CMND/CCCD");
-                String idNumber1 = null;
+                boolean gender = false;
                 do {
-                    if (Regex.checkIdCard(idNumber1)) {
-                        idNumber1 = scanner.nextLine();
+                    String checkGender = scanner.nextLine();
+                    if (checkGender.equals("1")) {
+                        gender = true;
+                        check3 = false;
+                    } else if (checkGender.equals("2")) {
+                        gender = false;
                         check3 = false;
                     } else {
+                        System.out.println("lựa chọn sai, mời chọn lại");
                         check3 = true;
-                        System.out.println("Chưa đúng định dạng, vui lòng nhập lại");
                     }
                 } while (check3);
-                int idNumber = Integer.parseInt(idNumber1);
                 boolean check4;
-                System.out.println("Số điện thoại");
-                int numberPhone = 0;
+                System.out.println("Số CMND/CCCD");
+                String idNumber;
                 do {
-                    if (Regex.checkNumberPhone(String.valueOf(numberPhone))) {
-                        numberPhone = Integer.parseInt(scanner.nextLine());
+                    idNumber = scanner.nextLine();
+                    if (Regex.checkIdCard(idNumber)) {
                         check4 = false;
                     } else {
-                        System.out.println("Chưa đúng định dạng, vui lòng nhập lại");
                         check4 = true;
+                        System.out.println("Chưa đúng định dạng, vui lòng nhập lại");
                     }
                 } while (check4);
+                boolean check5;
+                System.out.println("Số điện thoại");
+                String numberPhone;
+                do {
+                    numberPhone = scanner.nextLine();
+                    if (Regex.checkNumberPhone(numberPhone)) {
+                        check5 = false;
+                    } else {
+                        System.out.println("Chưa đúng định dạng, vui lòng nhập lại");
+                        check5 = true;
+                    }
+                } while (check5);
                 System.out.println("Email");
                 String email = scanner.nextLine();
                 System.out.println("Chọn loại khách hàng");
-                boolean flag1 = true;
+                boolean check6;
                 String typeOfGuest = "";
                 do {
                     System.out.print(
@@ -256,29 +284,29 @@ public class CustomerService implements IService {
                     switch (choice) {
                         case "1":
                             typeOfGuest = "Diamond";
-                            flag1 = false;
+                            check6 = false;
                             break;
                         case "2":
                             typeOfGuest = "Platinium";
-                            flag1 = false;
+                            check6 = false;
                             break;
                         case "3":
                             typeOfGuest = "Gold";
-                            flag1 = false;
+                            check6 = false;
                             break;
                         case "4":
                             typeOfGuest = "Silver";
-                            flag1 = false;
+                            check6 = false;
                             break;
                         case "5":
                             typeOfGuest = "Member";
-                            flag1 = false;
+                            check6 = false;
                             break;
                         default:
                             System.out.println("Không có loại khách hàng này, mời chọn đúng");
-                            flag1 = true;
+                            check6 = true;
                     }
-                } while (flag1);
+                } while (check6);
                 System.out.println("Address");
                 String address = scanner.nextLine();
                 Customer customer = new Customer(code, name, dayBirth, gender, idNumber, numberPhone, email, typeOfGuest, address);

@@ -1,4 +1,4 @@
-package case_study.until.file;
+package case_study.until.file.write_and_read_file;
 
 import java.io.*;
 import java.util.ArrayList;

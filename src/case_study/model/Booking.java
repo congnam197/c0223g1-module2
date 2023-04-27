@@ -80,15 +80,14 @@ public class Booking {
 
     @Override
     public String toString() {
-        return "Booking{" +
-                "codeClient='" + codeClient + '\'' +
-                ", codeService='" + codeService + '\'' +
-                ", codeBooking='" + codeBooking + '\'' +
-                ", dayStart='" + dayStart + '\'' +
-                ", dayEnd='" + dayEnd + '\'' +
-                ", nameService='" + nameService + '\'' +
-                ", typeOfService='" + typeOfService + '\'' +
-                '}';
+        return "Booking :" +
+                "codeClient: " + codeClient +
+                ", codeService: " + codeService +
+                ", codeBooking: " + codeBooking +
+                ", dayStart: " + dayStart +
+                ", dayEnd: " + dayEnd +
+                ", nameService: " + nameService +
+                ", typeOfService: " + typeOfService ;
     }
 
     public String getInfoToCSV() {

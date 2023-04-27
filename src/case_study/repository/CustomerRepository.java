@@ -1,7 +1,7 @@
 package case_study.repository;
 
 import case_study.model.Customer;
-import case_study.until.file.ReadAndWrieFile;
+import case_study.until.file.write_and_read_file.ReadAndWrieFile;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -34,7 +34,7 @@ public class CustomerRepository implements ICustomerRepository {
         List<String> stringList =ReadAndWrieFile.readFile(NAME_FILE);
         for (int i = 0; i < stringList.size(); i++) {
             String[] arr=stringList.get(i).split(",");
-            customerList.add(new Customer(arr[0], arr[1], arr[2],arr[3], Integer.parseInt(arr[4]), Integer.parseInt(arr[5]), arr[6], arr[7], arr[8]));
+            customerList.add(new Customer(arr[0], arr[1], arr[2],Boolean.parseBoolean(arr[3]),arr[4], arr[5], arr[6], arr[7], arr[8]));
         }
         return customerList;
     }

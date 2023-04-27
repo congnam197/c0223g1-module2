@@ -1,7 +1,7 @@
 package case_study.model;
 
 public abstract class Facility {
-    private  final String COMMA=",";
+    private final String COMMA = ",";
     private String serviceId;
     private String serviceName;
     private double area;
@@ -55,16 +55,16 @@ public abstract class Facility {
 
     @Override
     public String toString() {
-        return "{" +
-                "serviceId='" + serviceId + '\'' +
-                ", serviceName='" + serviceName + '\'' +
-                ", area=" + area +
-                ", price=" + price +
-                ", maximumNumberOfPeople=" + maximumNumberOfPeople +
-                ", rentalType='" + rentalType + '\'' +
-                '}';
+        return
+                "serviceId:" + serviceId +
+                ", serviceName:" + serviceName +
+                ", area:" + area +
+                ", price:" + price +
+                ", maximumNumberOfPeople:" + maximumNumberOfPeople +
+                ", rentalType:" + rentalType;
     }
-    public String showList(){
-        return serviceId+COMMA+serviceName+COMMA+area+COMMA+price+COMMA+maximumNumberOfPeople+COMMA+rentalType+COMMA;
+
+    public String showList() {
+        return serviceId + COMMA + serviceName + COMMA + area + COMMA + price + COMMA + maximumNumberOfPeople + COMMA + rentalType + COMMA;
     }
 }

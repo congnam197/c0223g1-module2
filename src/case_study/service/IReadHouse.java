@@ -4,6 +4,6 @@ import case_study.model.House;
 
 import java.util.Map;
 
-public interface IReadHouse {
+public interface IReadHouse{
     Map<House, Integer> read();
 }
