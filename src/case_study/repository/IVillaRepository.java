@@ -1,11 +1,11 @@
 package case_study.repository;
 
-import case_study.model.Villa;
+import case_study.model.VillaModel;
 
 import java.util.Map;
 
 public interface IVillaRepository {
-    void addVillaRepository(Villa villa, Integer value);
+    void addVillaRepository(VillaModel villaModel, Integer value);
 
-    Map<Villa, Integer> readVillaRepository();
+    Map<VillaModel, Integer> readVillaRepository();
 }

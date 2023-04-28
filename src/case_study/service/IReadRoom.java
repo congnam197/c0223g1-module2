@@ -1,9 +1,9 @@
 package case_study.service;
 
-import case_study.model.Room;
+import case_study.model.RoomModel;
 
 import java.util.Map;
 
 public interface IReadRoom {
-    Map<Room,Integer> read();
+    Map<RoomModel,Integer> read();
 }

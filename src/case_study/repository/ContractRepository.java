@@ -1,17 +1,17 @@
 package case_study.repository;
 
-import case_study.model.Contract;
+import case_study.model.ContractModel;
 
 import java.util.TreeSet;
 
 public class ContractRepository implements IContractRepository {
     @Override
-    public void add(Contract contract) {
+    public void add(ContractModel contractModel) {
 
     }
 
     @Override
-    public TreeSet<Contract> read() {
+    public TreeSet<ContractModel> read() {
         return null;
     }
 }

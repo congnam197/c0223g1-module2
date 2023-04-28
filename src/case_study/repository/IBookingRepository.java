@@ -1,13 +1,13 @@
 package case_study.repository;
 
-import case_study.model.Booking;
+import case_study.model.BookingModel;
 
 import java.util.TreeSet;
 
 public interface IBookingRepository {
-    void add(Booking booking);
+    void add(BookingModel bookingModel);
 
-    TreeSet<Booking> read();
+    TreeSet<BookingModel> read();
 
     void countValue(String str);
 }

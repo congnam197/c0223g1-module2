@@ -1,13 +1,13 @@
 package case_study.repository;
 
-import case_study.model.Customer;
+import case_study.model.CustomerModel;
 
 import java.util.List;
 
 public interface ICustomerRepository {
-    void add(Customer customer);
+    void add(CustomerModel customerModel);
 
-    void edit(Customer customer, int id);
+    void edit(CustomerModel customerModel, int id);
 
-    List<Customer> getCustomer();
+    List<CustomerModel> getCustomer();
 }

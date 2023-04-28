@@ -1,9 +1,9 @@
 package case_study.service;
 
-import case_study.model.Villa;
+import case_study.model.VillaModel;
 
 import java.util.Map;
 
 public interface IReadVilla {
-    Map<Villa,Integer> readVilla();
+    Map<VillaModel,Integer> readVilla();
 }

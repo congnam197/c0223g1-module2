@@ -1,11 +1,11 @@
 package case_study.repository;
 
-import case_study.model.Contract;
+import case_study.model.ContractModel;
 
 import java.util.TreeSet;
 
 public interface IContractRepository {
-    void add(Contract contract);
+    void add(ContractModel contractModel);
 
-    TreeSet<Contract> read();
+    TreeSet<ContractModel> read();
 }

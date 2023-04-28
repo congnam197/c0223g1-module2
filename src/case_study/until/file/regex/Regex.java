@@ -1,7 +1,8 @@
 package case_study.until.file.regex;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,15 +11,15 @@ public class Regex {
     private static final String REGEX_CODE_EMPLOYEE = "^((NV)(-))([0-9]{4})$";
     private static final String REGEX_CODE_CUSTOMER = "^((KH)(-))([0-9]{4})$";
     private static final String REGEX_IDCARD = "^(([0-9]{9})|([0-9]{12}))$";
-    private static final String REGEX_AGE = "^(((1)|(2))[0-9]{3})(-)((0)[1-9]|(1)[0-2])(-)(((0)[1-9])|((1|2)[0-9])|((3)[0-1]))$";
+    private static final String REGEX_DAYOFBIRTH = "^(((0)[1-9])|((1|2)[0-9])|((3)[0-1]))(-)((0)[1-9]|(1)[0-2])(-)(((1)|(2))[0-9]{3})$";
     private static final String REGEX_NUMBERPHONE = "^((0))([1-9]{9})$";
     private static final String REGEX_IDVILLA = "^(SVVL-)[0-9]{4}$";
     private static final String REGEX_INDHOUSE = "^(SVHO-)[0-9]{4}$";
     private static final String REGEX_IDROOM = "^(SVRO-)[0-9]{4}$";
     private static final String REGEX_AREA = "^([3-9][0-9])|([1-9][0-9]{2,})$";
     private static final String REGEX_NAMESERVICE = "^([A-Z])([a-z]+)$";
-    private static final String REGEX_PRICE = "^[0-9]+$";
-    private static final String REGEX_FLOOR = "^[0-9]+$";
+    private static final String REGEX_PRICE = "^[1-9]+$";
+    private static final String REGEX_FLOOR = "^[1-9]+$";
     private static final String REGEX_NUMBER_HUMANMAX = "^(1[0-9]+)|[1-9]$";
 
     public static boolean checkNamePerson(String name) {
@@ -40,7 +41,7 @@ public class Regex {
     }
 
     public static boolean checkAge(String age) {
-        return age.matches(REGEX_AGE) ? true : false;
+        return age.matches(REGEX_DAYOFBIRTH) ? true : false;
     }
 
     public static boolean checkNumberPhone(String numberPhone) {
@@ -90,20 +91,23 @@ public class Regex {
     }
 
     public static boolean checkUnderAge(String age) {
-//        LocalDateTime date = LocalDateTime.now();
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//        String st = dtf.format(date);
-//        System.out.println("Ngày hôm nay: " + st);
-//        LocalDateTime date1 = LocalDateTime.parse(age, dtf);
-//        LocalDateTime dateTime1 = date.minusYears(18);
-//        LocalDateTime dateTime2 = date1.plusYears(0);
-//        boolean flag = dateTime1.isAfter(dateTime2);
-//        if (flag) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-        return true;
+        DateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date currentDate = new Date();
+        Date date1 = null;
+        Date date2 = null;
+        try {
+            String startDate = age;
+            String endDate = simpleDateFormat.format(currentDate);
+            date1 = simpleDateFormat.parse(startDate);
+            date2 = simpleDateFormat.parse(endDate);
+            long getDiff = date2.getTime() - date1.getTime();
+            long getDaysDiff = getDiff / (24 * 60 * 60 * 1000);
+            if (getDaysDiff > 365 * 18) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
-
 }

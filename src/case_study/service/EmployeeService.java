@@ -1,6 +1,6 @@
 package case_study.service;
 
-import case_study.model.Employee;
+import case_study.model.EmployeeModel;
 import case_study.repository.EmployeeRepository;
 import case_study.until.file.regex.Regex;
 
@@ -11,10 +11,10 @@ import java.util.Scanner;
 public class EmployeeService implements IService {
     Scanner scanner = new Scanner(System.in);
     EmployeeRepository employeeRepository = new EmployeeRepository();
-    static List<Employee> employeeList = new ArrayList<>();
+    static List<EmployeeModel> employeeModelList = new ArrayList<>();
 
     public void read() {
-        employeeList = employeeRepository.getEmployee();
+        employeeModelList = employeeRepository.getEmployee();
     }
 
     @Override
@@ -28,8 +28,8 @@ public class EmployeeService implements IService {
                 code = scanner.nextLine();
             } while (!Regex.checkCodeEmployee(code));
             check = false;
-            for (int i = 0; i < employeeList.size(); i++) {
-                if (code.equals(employeeList.get(i).getCode())) {
+            for (int i = 0; i < employeeModelList.size(); i++) {
+                if (code.equals(employeeModelList.get(i).getCode())) {
                     System.out.print("mã đã tồn tại,mời nhập lại ");
                     check = true;
                 }
@@ -42,7 +42,7 @@ public class EmployeeService implements IService {
             name = scanner.nextLine();
         } while (!Regex.checkNamePerson(name));
         boolean check2;
-        System.out.print("Nhập ngày sinh (yyyy-MM-dd) ");
+        System.out.print("Nhập ngày sinh (dd-MM-yyyy) ");
         String dayBirth;
         do {
             dayBirth = scanner.nextLine();
@@ -104,11 +104,11 @@ public class EmployeeService implements IService {
         } while (check5);
         System.out.print("Email ");
         String email = scanner.nextLine();
-        System.out.print("Trình độ ");
+        System.out.println("Trình độ ");
         boolean flag1 = true;
         String level = "";
         do {
-            System.out.println("1. Trung cấp\n" +
+            System.out.print("1. Trung cấp\n" +
                     "2. Cao đẳng\n" +
                     "3. Đại học\n" +
                     "4. Sau Đại học ");
@@ -135,11 +135,11 @@ public class EmployeeService implements IService {
                     flag1 = true;
             }
         } while (flag1);
-        System.out.print("Vị trí ");
+        System.out.println("Vị trí ");
         boolean flag2 = true;
         String position = "";
         do {
-            System.out.println("1. Lễ tân\n" +
+            System.out.print("1. Lễ tân\n" +
                     "2. phục vụ\n" +
                     "3. chuyên viên\n" +
                     "4. giám sát\n" +
@@ -181,16 +181,16 @@ public class EmployeeService implements IService {
             System.out.print("nhập lương ");
             salary = scanner.nextDouble();
         } while (salary < 0);
-        Employee employee = new Employee(code, name, dayBirth, gender, idNumber, numPhone, email, level, position, salary);
-        employeeList.add(employee);
-        employeeRepository.add(employee);
+        EmployeeModel employeeModel = new EmployeeModel(code, name, dayBirth, gender, idNumber, numPhone, email, level, position, salary);
+        employeeModelList.add(employeeModel);
+        employeeRepository.add(employeeModel);
         System.out.print("đã thêm thành công ");
     }
 
     @Override
     public void display() {
         read();
-        for (Employee e : employeeList) {
+        for (EmployeeModel e : employeeModelList) {
             System.out.println(e);
         }
     }
@@ -202,9 +202,9 @@ public class EmployeeService implements IService {
         System.out.print("Nhập mã  nhân viên muốn sửa ");
         String code1 = scanner.nextLine();
         boolean flag = true;
-        for (int i = 0; i < employeeList.size(); i++) {
-            if (code1.equals(employeeList.get(i).getCode())) {
-                System.out.print("Thông tin nhân viên  đc tìm thấy " + employeeList.get(i));
+        for (int i = 0; i < employeeModelList.size(); i++) {
+            if (code1.equals(employeeModelList.get(i).getCode())) {
+                System.out.print("Thông tin nhân viên  đc tìm thấy " + employeeModelList.get(i));
                 System.out.print("Thêm mã nhân viên mới ");
                 boolean check;
                 String code;
@@ -216,8 +216,8 @@ public class EmployeeService implements IService {
                         System.out.print("Chưa đúng định dạng, mời nhập lại ");
                         check = true;
                     }
-                    for (int j = 0; j < employeeList.size(); j++) {
-                        if (employeeList.get(j).getCode().equals(code)) {
+                    for (int j = 0; j < employeeModelList.size(); j++) {
+                        if (employeeModelList.get(j).getCode().equals(code)) {
                             System.out.print("mã đã tồn tại, mới nhập lại ");
                             check = true;
                         }
@@ -230,7 +230,7 @@ public class EmployeeService implements IService {
                     name = scanner.nextLine();
                 } while (!Regex.checkNamePerson(name));
                 boolean check2;
-                System.out.print("Nhập ngày sinh (yyyy-MM-dd) ");
+                System.out.print("Nhập ngày sinh (dd-MM-yyyy) ");
                 String dayBirth;
                 do {
                     dayBirth = scanner.nextLine();
@@ -284,11 +284,11 @@ public class EmployeeService implements IService {
 
                 System.out.print("Email ");
                 String email = scanner.nextLine();
-                System.out.print("Trình độ ");
+                System.out.println("Trình độ ");
                 boolean flag1 = true;
                 String level = "";
                 do {
-                    System.out.println("1. Trung cấp\n" +
+                    System.out.print("1. Trung cấp\n" +
                             "2. Cao đẳng\n" +
                             "3. Đại học\n" +
                             "4. Sau Đại học ");
@@ -314,11 +314,11 @@ public class EmployeeService implements IService {
                             System.out.print("Không có lựa chọn này, mời nhập đúng lựa chọn");
                     }
                 } while (flag1);
-                System.out.print("Vị trí ");
+                System.out.println("Vị trí ");
                 boolean flag2 = true;
                 String position = "";
                 do {
-                    System.out.println("1. Lễ tân\n" +
+                    System.out.print("1. Lễ tân\n" +
                             "2. phục vụ\n" +
                             "3. chuyên viên\n" +
                             "4. giám sát\n" +
@@ -360,9 +360,9 @@ public class EmployeeService implements IService {
                     salary = scanner.nextDouble();
                 } while (salary > 0);
 
-                Employee employee = new Employee(code, name, dayBirth, gender, idNumber, numberPhone, email,
+                EmployeeModel employeeModel = new EmployeeModel(code, name, dayBirth, gender, idNumber, numberPhone, email,
                         level, position, salary);
-                employeeRepository.edit(employee, i);
+                employeeRepository.edit(employeeModel, i);
                 System.out.println("Sửa thành công ");
                 flag = false;
             }

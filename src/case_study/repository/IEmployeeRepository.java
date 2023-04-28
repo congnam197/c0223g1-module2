@@ -1,13 +1,13 @@
 package case_study.repository;
 
-import case_study.model.Employee;
+import case_study.model.EmployeeModel;
 
 import java.util.List;
 
 public interface IEmployeeRepository {
-    void add(Employee employee);
+    void add(EmployeeModel employeeModel);
 
-    void edit(Employee employee, int idex);
+    void edit(EmployeeModel employeeModel, int idex);
 
-    List<Employee> getEmployee();
+    List<EmployeeModel> getEmployee();
 }

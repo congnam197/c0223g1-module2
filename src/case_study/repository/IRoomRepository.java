@@ -1,11 +1,11 @@
 package case_study.repository;
 
-import case_study.model.Room;
+import case_study.model.RoomModel;
 
 import java.util.Map;
 
 public interface IRoomRepository {
-    void addRoom(Room room, Integer value);
+    void addRoom(RoomModel roomModel, Integer value);
 
-    Map<Room, Integer> readRoom();
+    Map<RoomModel, Integer> readRoom();
 }

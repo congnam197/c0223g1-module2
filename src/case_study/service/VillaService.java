@@ -1,6 +1,6 @@
 package case_study.service;
 
-import case_study.model.Villa;
+import case_study.model.VillaModel;
 import case_study.repository.IVillaRepository;
 import case_study.repository.VillaRepository;
 import case_study.until.file.regex.Regex;
@@ -11,11 +11,11 @@ import java.util.Scanner;
 
 public class VillaService implements IReadVilla, IAddService {
     Scanner scanner = new Scanner(System.in);
-    static Map<Villa, Integer> villaServiceMap = new LinkedHashMap<>();
+    static Map<VillaModel, Integer> villaServiceMap = new LinkedHashMap<>();
     IVillaRepository villaRepository = new VillaRepository();
 
     @Override
-    public Map<Villa, Integer> readVilla() {
+    public Map<VillaModel, Integer> readVilla() {
         villaServiceMap = villaRepository.readVillaRepository();
         return villaServiceMap;
     }
@@ -77,11 +77,11 @@ public class VillaService implements IReadVilla, IAddService {
             if (Regex.checkNumberHumanMax(numberHumanMax1)) {
                 flag5 = false;
             } else {
-                System.out.println("Nhập sai, nhập lại");
+                System.out.println("Số lượng người ít nhất là 1 và tối đa là 19 người, vui lòng kiểm tra lại  ");
             }
         } while (flag5);
         int numberHumanMax = Integer.parseInt(numberHumanMax1);
-        System.out.println("kiểu thuê");
+        System.out.println("Kiểu thuê");
         String rentalType = null;
         boolean flag6 = true;
         do {
@@ -92,22 +92,22 @@ public class VillaService implements IReadVilla, IAddService {
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1":
-                    System.out.println("Year");
+                    System.out.print("Year ");
                     rentalType = scanner.nextLine() + "Year";
                     flag6 = false;
                     break;
                 case "2":
-                    System.out.println("Month");
+                    System.out.print("Month ");
                     rentalType = scanner.nextLine() + "Month";
                     flag6 = false;
                     break;
                 case "3":
-                    System.out.println("Day");
+                    System.out.print("Day ");
                     rentalType = scanner.nextLine() + "Day";
                     flag6 = false;
                     break;
                 case "4":
-                    System.out.println("Hour");
+                    System.out.print("Hour ");
                     rentalType = scanner.nextLine() + "Hour";
                     flag6 = false;
                     break;
@@ -152,10 +152,10 @@ public class VillaService implements IReadVilla, IAddService {
             }
         } while (flag9);
         int numberOfFloors = Integer.parseInt(numberOfFloors1);
-        Villa villa = new Villa(id, nameService, area, price, numberHumanMax, rentalType, roomStandard, areaPool, numberOfFloors);
+        VillaModel villaModel = new VillaModel(id, nameService, area, price, numberHumanMax, rentalType, roomStandard, areaPool, numberOfFloors);
         Integer value = 0;
-        villaServiceMap.put(villa, value);
-        villaRepository.addVillaRepository(villa, value);
+        villaServiceMap.put(villaModel, value);
+        villaRepository.addVillaRepository(villaModel, value);
         System.out.println("Thêm thành công");
     }
 }

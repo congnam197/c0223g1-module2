@@ -1,11 +1,11 @@
 package case_study.repository;
 
-import case_study.model.House;
+import case_study.model.HouseModel;
 
 import java.util.Map;
 
 public interface IHouseRepository {
-    void addHouse(House house, Integer value);
+    void addHouse(HouseModel houseModel, Integer value);
 
-    Map<House, Integer> readHouse();
+    Map<HouseModel, Integer> readHouse();
 }
