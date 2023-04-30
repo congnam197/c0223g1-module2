@@ -49,9 +49,9 @@ public class EmployeeModel extends PersonModel {
     public String toString() {
         return "Employee: " +
                 super.toString() +
-                "level: " + level +
+                " level: " + level +
                 ", position: " + position +
-                ", salary: " + salary ;
+                ", salary: " + salary;
     }
 
     public String getInfoToCSV() {

@@ -20,65 +20,72 @@ public class EmployeeService implements IService {
     @Override
     public void add() {
         read();
+        System.out.print("Enter the new employee's code (NV-XXXX): ");
         String code;
         boolean check;
         do {
             do {
-                System.out.print("Thêm mã nhân viên mới ");
                 code = scanner.nextLine();
             } while (!Regex.checkCodeEmployee(code));
             check = false;
-            for (int i = 0; i < employeeModelList.size(); i++) {
-                if (code.equals(employeeModelList.get(i).getCode())) {
-                    System.out.print("mã đã tồn tại,mời nhập lại ");
+            for (EmployeeModel employeeModel : employeeModelList) {
+                if (code.equals(employeeModel.getCode())) {
+                    System.out.print("Code already exists, please re-enter: ");
                     check = true;
                 }
                 break;
             }
         } while (check);
+        System.out.print("Enter the new employee's name: ");
         String name;
+        boolean check1;
         do {
-            System.out.print("Nhập tên nhân viên ");
             name = scanner.nextLine();
-        } while (!Regex.checkNamePerson(name));
+            if (Regex.checkNamePerson(name)) {
+                check1 = false;
+            } else {
+                System.out.print("Incorrect format, please re- enter:  ");
+                check1 = true;
+            }
+        } while (check1);
         boolean check2;
-        System.out.print("Nhập ngày sinh (dd-MM-yyyy) ");
-        String dayBirth;
+        System.out.print("Enter day of birth (dd-MM-yyyy):  ");
+        String dayOfBirth;
         do {
-            dayBirth = scanner.nextLine();
-            if (Regex.checkAge(dayBirth)) {
-                if (Regex.checkUnderAge(dayBirth)) {
+            dayOfBirth = scanner.nextLine();
+            if (Regex.checkDay(dayOfBirth)) {
+                if (Regex.checkUnderAge(dayOfBirth)) {
                     check2 = false;
-                    System.out.println("Đã trên 18 tuổi ");
+                    System.out.println("Ok! Over 18 years old ");
                 } else {
-                    System.out.print("Chưa đủ 18 tuổi ,Vui Lòng Xác Nhận  lại ");
+                    System.out.print("Under 18 years old, please confirm again: ");
                     check2 = true;
                 }
             } else {
-                System.out.print("Không đúng định dạng, hãy nhập lại ");
+                System.out.print("Incorrect format, please re- enter:  ");
                 check2 = true;
             }
         } while (check2);
-        System.out.print("Giới tính " +
-                "1.Nam " +
-                "2.Nữ ");
+        System.out.print("Choice gender " +
+                "1.Male " +
+                "2.FeMale ");
         boolean check3;
         boolean gender = false;
         do {
             String checkGender = scanner.nextLine();
-            if (checkGender.equals("1")){
-                gender=true;
-                check3=false;
-            }else  if (checkGender.equals("2")){
-                gender=false;
-                check3=false;
-            }else {
-                System.out.print("lựa chọn sai, mời chọn lại ");
-                check3=true;
+            if (checkGender.equals("1")) {
+                gender = true;
+                check3 = false;
+            } else if (checkGender.equals("2")) {
+                gender = false;
+                check3 = false;
+            } else {
+                System.out.print("Wrong choice, please choose again:  ");
+                check3 = true;
             }
-        }while (check3);
+        } while (check3);
         boolean check4;
-        System.out.print("Số CMND/CCCD ");
+        System.out.print("Enter the Identity card number: ");
         String idNumber;
         do {
             idNumber = scanner.nextLine();
@@ -86,105 +93,105 @@ public class EmployeeService implements IService {
                 check4 = false;
             } else {
                 check4 = true;
-                System.out.print("Chưa đúng định dạng, vui lòng nhập lại ");
+                System.out.print("Incorrect format, please re- enter:  ");
             }
         } while (check4);
-        System.out.print("Số điện thoại ");
-        String numPhone = null;
+        System.out.print("Enter the number phone: ");
+        String numPhone;
         boolean check5;
         do {
             numPhone = scanner.nextLine();
-            if (Regex.checkNumberPhone(numPhone)){
-                check5=false;
-            }else {
-                System.out.print("Nhập chưa đúng, vui lòng nhập lại ");
-                check5=true;
+            if (Regex.checkNumberPhone(numPhone)) {
+                check5 = false;
+            } else {
+                System.out.print("Incorrect format, please re- enter:  ");
+                check5 = true;
             }
 
         } while (check5);
-        System.out.print("Email ");
+        System.out.print("Enter the Email: ");
         String email = scanner.nextLine();
-        System.out.println("Trình độ ");
-        boolean flag1 = true;
+        System.out.println("Choice the Level: ");
+        boolean check6;
         String level = "";
         do {
-            System.out.print("1. Trung cấp\n" +
-                    "2. Cao đẳng\n" +
-                    "3. Đại học\n" +
-                    "4. Sau Đại học ");
+            System.out.print("1. Intermediate\n" +
+                    "2. Higher\n" +
+                    "3. University\n" +
+                    "4. After University: ");
             String choice1 = scanner.nextLine();
             switch (choice1) {
                 case "1":
-                    level = "Trung cấp";
-                    flag1 = false;
+                    level = "Intermediate";
+                    check6 = false;
                     break;
                 case "2":
-                    level = "Cao đẳng";
-                    flag1 = false;
+                    level = "Higher";
+                    check6 = false;
                     break;
                 case "3":
-                    level = "Đại học";
-                    flag1 = false;
+                    level = "University";
+                    check6 = false;
                     break;
                 case "4":
-                    level = "Sau Đại học";
-                    flag1 = false;
+                    level = "After University";
+                    check6 = false;
                     break;
                 default:
-                    System.out.print("Không có lựa chọn này, mời nhập đúng lựa chọn ");
-                    flag1 = true;
+                    System.out.print("It is not available, please select again: ");
+                    check6 = true;
             }
-        } while (flag1);
-        System.out.println("Vị trí ");
-        boolean flag2 = true;
+        } while (check6);
+        System.out.println("Choose the place of work: ");
+        boolean check7;
         String position = "";
         do {
-            System.out.print("1. Lễ tân\n" +
-                    "2. phục vụ\n" +
-                    "3. chuyên viên\n" +
-                    "4. giám sát\n" +
-                    "5. quản lý\n" +
-                    "6. giám đốc ");
+            System.out.print("1. Receptionist\n" +
+                    "2. Serve\n" +
+                    "3. Expert\n" +
+                    "4. Monitor\n" +
+                    "5. Manage\n" +
+                    "6. Director: ");
             String choice2 = scanner.nextLine();
             switch (choice2) {
                 case "1":
-                    position = "Lễ tân";
-                    flag2 = false;
+                    position = "Receptionist";
+                    check7 = false;
                     break;
                 case "2":
-                    position = "phục vụ";
-                    flag2 = false;
+                    position = "Serve";
+                    check7 = false;
                     break;
                 case "3":
-                    position = "chuyên viên";
-                    flag2 = false;
+                    position = "Expert";
+                    check7 = false;
                     break;
                 case "4":
-                    position = "giám sát";
-                    flag2 = false;
+                    position = "Monitor";
+                    check7 = false;
                     break;
                 case "5":
-                    position = "quản lý";
-                    flag2 = false;
+                    position = "Manage";
+                    check7 = false;
                     break;
                 case "6":
-                    position = "giám đốc";
-                    flag2 = false;
+                    position = "Director";
+                    check7 = false;
                     break;
                 default:
-                    System.out.println("Không có lựa chọn này, mời nhập đúng lựa chọn ");
-                    flag2 = true;
+                    System.out.println("It is not available, please select again: ");
+                    check7 = true;
             }
-        } while (flag2);
+        } while (check7);
         double salary;
         do {
-            System.out.print("nhập lương ");
+            System.out.print("Basic salary ");
             salary = scanner.nextDouble();
         } while (salary < 0);
-        EmployeeModel employeeModel = new EmployeeModel(code, name, dayBirth, gender, idNumber, numPhone, email, level, position, salary);
+        EmployeeModel employeeModel = new EmployeeModel(code, name, dayOfBirth, gender, idNumber, numPhone, email, level, position, salary);
         employeeModelList.add(employeeModel);
         employeeRepository.add(employeeModel);
-        System.out.print("đã thêm thành công ");
+        System.out.print("Successfully added ");
     }
 
     @Override
@@ -199,13 +206,13 @@ public class EmployeeService implements IService {
     public void edit() {
         read();
         display();
-        System.out.print("Nhập mã  nhân viên muốn sửa ");
-        String code1 = scanner.nextLine();
+        System.out.print("Enter the Employee ID to update: ");
+        String editNameEmployee = scanner.nextLine();
         boolean flag = true;
         for (int i = 0; i < employeeModelList.size(); i++) {
-            if (code1.equals(employeeModelList.get(i).getCode())) {
-                System.out.print("Thông tin nhân viên  đc tìm thấy " + employeeModelList.get(i));
-                System.out.print("Thêm mã nhân viên mới ");
+            if (editNameEmployee.equals(employeeModelList.get(i).getName())) {
+                System.out.println("Employee information found \n " + employeeModelList.get(i));
+                System.out.print("Insert a new employee code: ");
                 boolean check;
                 String code;
                 do {
@@ -213,162 +220,178 @@ public class EmployeeService implements IService {
                     if (Regex.checkCodeEmployee(code)) {
                         check = false;
                     } else {
-                        System.out.print("Chưa đúng định dạng, mời nhập lại ");
+                        System.out.print("This format is incorrect, please re-enter:  ");
                         check = true;
                     }
-                    for (int j = 0; j < employeeModelList.size(); j++) {
-                        if (employeeModelList.get(j).getCode().equals(code)) {
-                            System.out.print("mã đã tồn tại, mới nhập lại ");
+                    for (EmployeeModel employeeModel : employeeModelList) {
+                        if (employeeModel.getCode().equals(code)) {
+                            System.out.print("The code already exists, just re-entered: ");
                             check = true;
                         }
                         break;
                     }
                 } while (check);
+                System.out.print("Enter the new employee's name: ");
                 String name;
+                boolean check1;
                 do {
-                    System.out.print("Nhập tên nhân viên ");
                     name = scanner.nextLine();
-                } while (!Regex.checkNamePerson(name));
-                boolean check2;
-                System.out.print("Nhập ngày sinh (dd-MM-yyyy) ");
+                    if (Regex.checkNamePerson(name)) {
+                        check1 = false;
+                    } else {
+                        System.out.print("Incorrect format, please re- enter:  ");
+                        check1 = true;
+                    }
+                } while (check1);
+                System.out.print("Enter day of birth (dd-MM-yyyy):  ");
                 String dayBirth;
+                boolean check2;
                 do {
                     dayBirth = scanner.nextLine();
-                    if (Regex.checkAge(dayBirth)) {
+                    if (Regex.checkDay(dayBirth)) {
                         if (Regex.checkUnderAge(dayBirth)) {
                             check2 = false;
-                            System.out.print("Đã trên 18 tuổi ");
+                            System.out.println("Ok! Over 18 years old  ");
 
                         } else {
-                            System.out.print("Chưa đủ 18 tuổi ,Vui Lòng Xác Nhận  lại ");
+                            System.out.print("Under 18 years old, please confirm again: ");
                             check2 = true;
                         }
                     } else {
-                        System.out.print("Không đúng định dạng, hãy nhập lại ");
+                        System.out.print("Incorrect format, please re- enter:  ");
                         check2 = true;
                     }
                 } while (check2);
-
-                System.out.print("Giới tính " +
-                        "1.Nam " +
-                        "2.Nữ ");
+                System.out.print("Choice gender " +
+                        "1.Male " +
+                        "2.FeMale ");
                 boolean check3;
                 boolean gender = false;
                 do {
                     String checkGender = scanner.nextLine();
-                    if (checkGender.equals("1")){
-                        gender=true;
-                        check3=false;
-                    }else  if (checkGender.equals("2")){
-                        gender=false;
-                        check3=false;
-                    }else {
-                        System.out.print("lựa chọn sai, mời chọn lại ");
-                        check3=true;
+                    if (checkGender.equals("1")) {
+                        gender = true;
+                        check3 = false;
+                    } else if (checkGender.equals("2")) {
+                        gender = false;
+                        check3 = false;
+                    } else {
+                        System.out.print("Wrong choice, please choose again:  ");
+                        check3 = true;
                     }
-                }while (check3);
+                } while (check3);
+                boolean check4;
+                System.out.print("Enter the Identity card number: ");
                 String idNumber;
                 do {
-                    System.out.print("Số CMND/CCCD ");
                     idNumber = scanner.nextLine();
-                } while (!Regex.checkIdCard(idNumber));
-                String numberPhone = null;
-                do {
-                    try {
-                        System.out.print("Số điện thoại ");
-                        numberPhone = scanner.nextLine();
-                    } catch (Exception e) {
-                        System.out.print("chỉ nhập số  ");
+                    if (Regex.checkIdCard(idNumber)) {
+                        check4 = false;
+                    } else {
+                        check4 = true;
+                        System.out.print("Incorrect format, please re- enter:  ");
                     }
-                } while (!Regex.checkNumberPhone(numberPhone));
-
-                System.out.print("Email ");
+                } while (check4);
+                System.out.print("Enter the number phone: ");
+                String numberPhone;
+                boolean check5;
+                do {
+                    numberPhone = scanner.nextLine();
+                    if (Regex.checkNumberPhone(numberPhone)) {
+                        check5 = false;
+                    } else {
+                        System.out.print("Incorrect format, please re- enter:  ");
+                        check5 = true;
+                    }
+                } while (check5);
+                System.out.print("Enter the Email: ");
                 String email = scanner.nextLine();
-                System.out.println("Trình độ ");
-                boolean flag1 = true;
+                System.out.println("Choice the Level: ");
+                boolean check6;
                 String level = "";
                 do {
-                    System.out.print("1. Trung cấp\n" +
-                            "2. Cao đẳng\n" +
-                            "3. Đại học\n" +
-                            "4. Sau Đại học ");
+                    System.out.print("1. Intermediate\n" +
+                            "2. Higher\n" +
+                            "3. University\n" +
+                            "4. After University: ");
                     String choice1 = scanner.nextLine();
                     switch (choice1) {
                         case "1":
-                            level = "Trung cấp";
-                            flag1 = false;
+                            level = "Intermediate";
+                            check6 = false;
                             break;
                         case "2":
-                            level = "Cao đẳng";
-                            flag1 = false;
+                            level = "Higher";
+                            check6 = false;
                             break;
                         case "3":
-                            level = "Đại học";
-                            flag1 = false;
+                            level = "University";
+                            check6 = false;
                             break;
                         case "4":
-                            level = "Sau Đại học";
-                            flag1 = false;
+                            level = "After University";
+                            check6 = false;
                             break;
                         default:
-                            System.out.print("Không có lựa chọn này, mời nhập đúng lựa chọn");
+                            System.out.print("It is not available, please select again: ");
+                            check6 = true;
                     }
-                } while (flag1);
-                System.out.println("Vị trí ");
-                boolean flag2 = true;
+                } while (check6);
+                System.out.println("Choose the place of work: ");
+                boolean check7;
                 String position = "";
                 do {
-                    System.out.print("1. Lễ tân\n" +
-                            "2. phục vụ\n" +
-                            "3. chuyên viên\n" +
-                            "4. giám sát\n" +
-                            "5. quản lý\n" +
-                            "6. giám đốc ");
+                    System.out.print("1. Receptionist\n" +
+                            "2. Serve\n" +
+                            "3. Expert\n" +
+                            "4. Monitor\n" +
+                            "5. Manage\n" +
+                            "6. Director: ");
                     String choice2 = scanner.nextLine();
                     switch (choice2) {
                         case "1":
-                            position = "Lễ tân";
-                            flag2 = false;
+                            position = "Receptionist";
+                            check7 = false;
                             break;
                         case "2":
-                            position = "Phục vụ";
-                            flag2 = false;
+                            position = "Serve";
+                            check7 = false;
                             break;
                         case "3":
-                            position = "Chuyên viên";
-                            flag2 = false;
+                            position = "Expert";
+                            check7 = false;
                             break;
                         case "4":
-                            position = "Giám sát";
-                            flag2 = false;
+                            position = "Monitor";
+                            check7 = false;
                             break;
                         case "5":
-                            position = "Quản lý";
-                            flag2 = false;
+                            position = "Manage";
+                            check7 = false;
                             break;
                         case "6":
-                            position = "Giám đốc";
-                            flag2 = false;
+                            position = "Director";
+                            check7 = false;
                             break;
                         default:
-                            System.out.print("Không có lựa chọn này, mời nhập đúng lựa chọn ");
+                            System.out.println("It is not available, please select again: ");
+                            check7 = true;
                     }
-                } while (flag2);
+                } while (check7);
                 double salary;
                 do {
-                    System.out.print("Nhập lương ");
+                    System.out.print("Basic salary: ");
                     salary = scanner.nextDouble();
-                } while (salary > 0);
-
+                } while (salary < 0);
                 EmployeeModel employeeModel = new EmployeeModel(code, name, dayBirth, gender, idNumber, numberPhone, email,
                         level, position, salary);
                 employeeRepository.edit(employeeModel, i);
-                System.out.println("Sửa thành công ");
+                System.out.println("Successful fix ");
                 flag = false;
             }
         }
         if (flag) {
-            System.out.println("Mã nhân viên không tồn tại ");
+            System.out.println("Employee code does not exist! ");
         }
     }
 }

@@ -1,5 +1,5 @@
 package case_study.service;
 
 public interface IDisplayService {
-    void displayList();
+    void display();
 }

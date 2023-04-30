@@ -33,7 +33,7 @@ public class CustomerModel extends PersonModel {
     public String toString() {
         return "Customer : " +
                 super.toString() +
-                ", typeCustomer: " + typeOfGuest +
+                " typeCustomer: " + typeOfGuest +
                 ", address :" + address;
     }
 

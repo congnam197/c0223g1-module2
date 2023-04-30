@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-public class FacilityService implements IAddService, IDisplayService, IDisplayMaintenance, IRead {
+public class FacilityService implements IAddService, IDisplayService, IDisplayMaintenance, IReadService {
     static Map<FacilityModel, Integer> facilityIntegerMap = new LinkedHashMap<>();
     static Map<FacilityModel, Integer> maintenanceMap = new LinkedHashMap<>();
 
@@ -28,8 +28,8 @@ public class FacilityService implements IAddService, IDisplayService, IDisplayMa
     public void read() {
         Map<FacilityModel, Integer> mapFacility = new LinkedHashMap<>();
         Map<VillaModel, Integer> villaIntegerMap = villaService.readVilla();
-        Map<RoomModel, Integer> roomIntegerMap = roomService.read();
-        Map<HouseModel, Integer> houseIntegerMap = houseService.read();
+        Map<RoomModel, Integer> roomIntegerMap = roomService.readRoom();
+        Map<HouseModel, Integer> houseIntegerMap = houseService.readHouse();
         Set<VillaModel> villaModelSet = villaIntegerMap.keySet();
         Set<RoomModel> roomModelSet = roomIntegerMap.keySet();
         Set<HouseModel> houseModelSet = houseIntegerMap.keySet();
@@ -53,7 +53,7 @@ public class FacilityService implements IAddService, IDisplayService, IDisplayMa
                     "2.Add New House\n" +
                     "3.Add New Room\n" +
                     "4.Back to menu\n");
-            System.out.print("Nhập lựa chọn: ");
+            System.out.print("Enter the choice: ");
             String choice3 = scanner.nextLine();
             switch (choice3) {
                 case "1":
@@ -72,22 +72,21 @@ public class FacilityService implements IAddService, IDisplayService, IDisplayMa
                     flag = false;
                     break;
                 case "4":
-                    System.out.println("return menu");
+                    System.out.println("Return menu");
                     flag = false;
                     break;
                 default:
-                    System.out.print("Nhập sai, vui lòng chọn lại ");
+                    System.out.print("Incorrect entry, please select again: ");
             }
         } while (flag);
     }
 
-
     @Override
-    public void displayList() {
+    public void display() {
         read();
         Set<FacilityModel> setList = facilityIntegerMap.keySet();
         for (FacilityModel f : setList) {
-            System.out.println(f + ", số lần book: " + facilityIntegerMap.get(f));
+            System.out.println(f + ", Number of bookings: " + facilityIntegerMap.get(f));
             if (facilityIntegerMap.get(f) > 4) {
                 maintenanceMap.put(f, facilityIntegerMap.get(f));
             }
@@ -105,7 +104,7 @@ public class FacilityService implements IAddService, IDisplayService, IDisplayMa
         }
         Set<FacilityModel> set1 = maintenanceMap.keySet();
         for (FacilityModel facilityModel : set1) {
-            System.out.println(facilityModel + " số lần book: " + maintenanceMap.get(facilityModel));
+            System.out.println(facilityModel + " Number of bookings: " + maintenanceMap.get(facilityModel));
         }
     }
 }

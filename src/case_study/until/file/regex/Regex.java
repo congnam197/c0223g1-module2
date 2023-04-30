@@ -1,17 +1,20 @@
 package case_study.until.file.regex;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Regex {
-    private static final String REGEX_NAME = "^([A-Z][a-z]{2,9}(\\s)){1,3}([A-Z][a-z]{2,9})$";
+    private static final String REGEX_NAME = "^([A-Z][a-z]+(\\s)){1,3}([A-Z][a-z]{1,9})$";
     private static final String REGEX_CODE_EMPLOYEE = "^((NV)(-))([0-9]{4})$";
     private static final String REGEX_CODE_CUSTOMER = "^((KH)(-))([0-9]{4})$";
     private static final String REGEX_IDCARD = "^(([0-9]{9})|([0-9]{12}))$";
-    private static final String REGEX_DAYOFBIRTH = "^(((0)[1-9])|((1|2)[0-9])|((3)[0-1]))(-)((0)[1-9]|(1)[0-2])(-)(((1)|(2))[0-9]{3})$";
+    private static final String REGEX_DAY = "^(((0)[1-9]|[1-9])|((1|2)[0-9])|((3)[0-1]))(-)(((0)[1-9]|[1-9])|(1)[0-2])(-)(((1)|(2))[0-9]{3})$";
     private static final String REGEX_NUMBERPHONE = "^((0))([1-9]{9})$";
     private static final String REGEX_IDVILLA = "^(SVVL-)[0-9]{4}$";
     private static final String REGEX_INDHOUSE = "^(SVHO-)[0-9]{4}$";
@@ -40,8 +43,8 @@ public class Regex {
         return matcher.matches();
     }
 
-    public static boolean checkAge(String age) {
-        return age.matches(REGEX_DAYOFBIRTH) ? true : false;
+    public static boolean checkDay(String age) {
+        return age.matches(REGEX_DAY) ? true : false;
     }
 
     public static boolean checkNumberPhone(String numberPhone) {
@@ -93,8 +96,8 @@ public class Regex {
     public static boolean checkUnderAge(String age) {
         DateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date currentDate = new Date();
-        Date date1 = null;
-        Date date2 = null;
+        Date date1;
+        Date date2;
         try {
             String startDate = age;
             String endDate = simpleDateFormat.format(currentDate);
@@ -107,6 +110,38 @@ public class Regex {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean checkDayBooking(String stringDate) {
+        Calendar cal = Calendar.getInstance();
+        Date date = cal.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        Date date1 = null;
+        try {
+            date1 = sdf.parse(stringDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if (date1.compareTo(date) < 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean checkDayStartAndDayEnd(String startDay, String endDay) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyy");
+        Date dateStart = null;
+        Date dateEnd = null;
+        try {
+            dateStart = sdf.parse(startDay);
+            dateEnd = sdf.parse(endDay);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if (dateEnd.compareTo(dateStart) >= 0) {
+            return true;
         }
         return false;
     }

@@ -12,13 +12,30 @@ public abstract class FacilityModel {
     public FacilityModel() {
     }
 
-    public FacilityModel(String serviceId, String serviceName, double area, double price, int maximumNumberOfPeople, String rentalType) {
+    public FacilityModel(String serviceId, String serviceName, double area, double price,
+                         int maximumNumberOfPeople, String rentalType) {
         this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.area = area;
         this.price = price;
         this.maximumNumberOfPeople = maximumNumberOfPeople;
         this.rentalType = rentalType;
+    }
+
+    public String getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(String serviceId) {
+        this.serviceId = serviceId;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getServiceName() {
@@ -57,14 +74,15 @@ public abstract class FacilityModel {
     public String toString() {
         return
                 "serviceId:" + serviceId +
-                ", serviceName:" + serviceName +
-                ", area:" + area +
-                ", price:" + price +
-                ", maximumNumberOfPeople:" + maximumNumberOfPeople +
-                ", rentalType:" + rentalType;
+                        ", serviceName:" + serviceName +
+                        ", area:" + area +
+                        ", price:" + price +
+                        ", maximumNumberOfPeople:" + maximumNumberOfPeople +
+                        ", rentalType:" + rentalType;
     }
 
     public String showList() {
-        return serviceId + COMMA + serviceName + COMMA + area + COMMA + price + COMMA + maximumNumberOfPeople + COMMA + rentalType + COMMA;
+        return serviceId + COMMA + serviceName + COMMA + area + COMMA + price + COMMA +
+                maximumNumberOfPeople + COMMA + rentalType + COMMA;
     }
 }

@@ -21,7 +21,7 @@ public class FacilityController {
             String choice3 = sc.nextLine();
             switch (choice3) {
                 case "1":
-                    facilityService.displayList();
+                    facilityService.display();
                     break;
                 case "2":
                     facilityService.add();

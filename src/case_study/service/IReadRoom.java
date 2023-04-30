@@ -5,5 +5,5 @@ import case_study.model.RoomModel;
 import java.util.Map;
 
 public interface IReadRoom {
-    Map<RoomModel,Integer> read();
+    Map<RoomModel,Integer> readRoom();
 }

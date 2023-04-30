@@ -14,9 +14,7 @@ public class HouseService implements IAddService, IReadHouse {
 
     @Override
     public void add() {
-//String serviceId, String serviceName, double area, double price, int maximumNumberOfPeople,
-//                      String rentalType, String roomStandard, int floor) {
-        System.out.print("Nhập mã nhà ở ( có dạng SVHO-YYYY) ");
+        System.out.print("Enter the house's code ( có dạng SVHO-YYYY) ");
         String houseID;
         boolean check1;
         do {
@@ -24,11 +22,11 @@ public class HouseService implements IAddService, IReadHouse {
             if (Regex.checkIdHouse(houseID)) {
                 check1 = false;
             } else {
-                System.out.print("Chưa đúng, vui lòng nhập lại ");
+                System.out.print("Incorrect format, please re- enter:  ");
                 check1 = true;
             }
         } while (check1);
-        System.out.print("Nhập tên nhà ");
+        System.out.print("Enter the service's name: ");
         String nameHouse;
         boolean check2;
         do {
@@ -36,11 +34,11 @@ public class HouseService implements IAddService, IReadHouse {
             if (Regex.checkNameService(nameHouse)) {
                 check2 = false;
             } else {
-                System.out.print("Nhập chưa đúng, vui lòng nhập lại ");
+                System.out.print("Incorrect format, please re- enter:  ");
                 check2 = true;
             }
         } while (check2);
-        System.out.print("Nhập diện tích nhà ");
+        System.out.print("Enter the house's area: ");
         String area1;
         boolean check3;
         do {
@@ -48,12 +46,12 @@ public class HouseService implements IAddService, IReadHouse {
             if (Regex.checkArea(area1)) {
                 check3 = false;
             } else {
-                System.out.print("nhâp chưa đúng, vui lòng nhập lại ");
+                System.out.print("Incorrect format, please re- enter:   ");
                 check3 = true;
             }
         } while (check3);
         double area = Double.parseDouble(area1);
-        System.out.print("Nhập giá cho thuê ");
+        System.out.print("Enter rental price: ");
         String price1;
         boolean check4;
         do {
@@ -61,12 +59,12 @@ public class HouseService implements IAddService, IReadHouse {
             if (Regex.checkPrice(price1)) {
                 check4 = false;
             } else {
-                System.out.print("Nhập chưa đúng mới nhập lại ");
+                System.out.print("Incorrect format, please re- enter:   ");
                 check4 = true;
             }
         } while (check4);
         double price = Double.parseDouble(price1);
-        System.out.print("Số người tối đa ");
+        System.out.print("Maximum number of persons: ");
         String maximumPeople1;
         boolean check5;
         do {
@@ -74,12 +72,12 @@ public class HouseService implements IAddService, IReadHouse {
             if (Regex.checkNumberHumanMax(maximumPeople1)) {
                 check5 = false;
             } else {
-                System.out.print("Số lượng người ít nhất là 1 và tối đa là 19 người, vui lòng kiểm tra lại ");
+                System.out.print("The minimum number of persons is 1 and the maximum is 19, please verify again: ");
                 check5 = true;
             }
         } while (check5);
         int maximumNumberPeople = Integer.parseInt(maximumPeople1);
-        System.out.println("Kiểu thuê");
+        System.out.println("Rental type");
         String rentalType = null;
         boolean check6 = true;
         do {
@@ -110,10 +108,10 @@ public class HouseService implements IAddService, IReadHouse {
                     check6 = false;
                     break;
                 default:
-                    System.out.println("Nhập sai, nhập lại");
+                    System.out.println("It is not available, please select again: ");
             }
         } while (check6);
-        System.out.print("Tiêu chuẩn phòng ");
+        System.out.print("Room standard: ");
         String roomStandard;
         boolean check7;
         do {
@@ -121,11 +119,11 @@ public class HouseService implements IAddService, IReadHouse {
             if (Regex.checkNameService(roomStandard)) {
                 check7 = false;
             } else {
-                System.out.print("Nhập chưa đúng, mời nhập lại ");
+                System.out.print("Incorrect format, please re- enter:   ");
                 check7 = true;
             }
         } while (check7);
-        System.out.print("Số tầng ");
+        System.out.print("Enter the house's floor: ");
         String floor1;
         boolean check8;
         do {
@@ -133,7 +131,7 @@ public class HouseService implements IAddService, IReadHouse {
             if (Regex.checkFloor(floor1)) {
                 check8 = false;
             } else {
-                System.out.print("Nhập chưa đúng, vui lòng nhập lại");
+                System.out.print("Incorrect format, please re- enter:   ");
                 check8 = true;
             }
         } while (check8);
@@ -141,11 +139,11 @@ public class HouseService implements IAddService, IReadHouse {
         HouseModel houseModel = new HouseModel(houseID, nameHouse, area, price, maximumNumberPeople, rentalType, roomStandard, floor);
         Integer value = 0;
         houseRepository.addHouse(houseModel, value);
-        System.out.println("Thêm thành công");
+        System.out.println("Successfully added! ");
     }
 
     @Override
-    public Map<HouseModel, Integer> read() {
+    public Map<HouseModel, Integer> readHouse() {
         Map<HouseModel, Integer> houseIntegerMap = new LinkedHashMap<>();
         houseIntegerMap = houseRepository.readHouse();
         return houseIntegerMap;

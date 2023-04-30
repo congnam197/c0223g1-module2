@@ -8,14 +8,14 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class RoomService implements IAddService,IReadRoom {
+public class RoomService implements IAddService, IReadRoom {
     Scanner scanner = new Scanner(System.in);
     RoomRepository roomRepository = new RoomRepository();
-    static Map<RoomModel,Integer> roomIntegerMap =new LinkedHashMap<>();
+    static Map<RoomModel, Integer> roomIntegerMap = new LinkedHashMap<>();
 
     @Override
     public void add() {
-        System.out.print("Nhập mã Phòng có định dạng SVRO-YYYY ");
+        System.out.print("Enter the room ID into the format SVRO-YYYY: ");
         boolean check1;
         String serviceID;
         do {
@@ -23,11 +23,11 @@ public class RoomService implements IAddService,IReadRoom {
             if (Regex.checkIdRoom(serviceID)) {
                 check1 = false;
             } else {
-                System.out.print("Mã chưa đúng định dạng,vui lòng nhập lại  ");
+                System.out.print("Incorrect format, please re- enter:  ");
                 check1 = true;
             }
         } while (check1);
-        System.out.print("Nhập tên Phòng ");
+        System.out.print("Enter the service's name ");
         String serviceName;
         boolean check2;
         do {
@@ -35,11 +35,11 @@ public class RoomService implements IAddService,IReadRoom {
             if (Regex.checkNameService(serviceName)) {
                 check2 = false;
             } else {
-                System.out.print("Nhập chưa đúng mời nhập lại ");
+                System.out.print("Incorrect format, please re- enter:  ");
                 check2 = true;
             }
         } while (check2);
-        System.out.print("Nhập diện tích phòng ");
+        System.out.print("Enter the room's area: ");
         boolean check3;
         String area1;
         do {
@@ -47,12 +47,12 @@ public class RoomService implements IAddService,IReadRoom {
             if (Regex.checkArea(area1)) {
                 check3 = false;
             } else {
-                System.out.print("Nhập chưa đúng, mời nhập lại ");
+                System.out.print("Incorrect format, please re- enter:  ");
                 check3 = true;
             }
         } while (check3);
         double area = Double.parseDouble(area1);
-        System.out.print("Nhập giá cho thuê ");
+        System.out.print("Enter rental price: ");
         String price1;
         boolean check4;
         do {
@@ -60,12 +60,12 @@ public class RoomService implements IAddService,IReadRoom {
             if (Regex.checkPrice(price1)) {
                 check4 = false;
             } else {
-                System.out.print("Nhập chưa đúng mới nhập lại ");
+                System.out.print("Incorrect format, please re- enter:  ");
                 check4 = true;
             }
         } while (check4);
         double price = Double.parseDouble(price1);
-        System.out.print("Số người tối đa ");
+        System.out.print("Maximum number of persons: ");
         String maximumPeople1;
         boolean check5;
         do {
@@ -73,12 +73,12 @@ public class RoomService implements IAddService,IReadRoom {
             if (Regex.checkNumberHumanMax(maximumPeople1)) {
                 check5 = false;
             } else {
-                System.out.print("Số lượng người ít nhất là 1 và tối đa là 19 người, vui lòng kiểm tra lại ");
+                System.out.print("The minimum number of persons is 1 and the maximum is 19, please verify again:  ");
                 check5 = true;
             }
         } while (check5);
         int maximumNumberPeople = Integer.parseInt(maximumPeople1);
-        System.out.println("Kiểu thuê");
+        System.out.println("Rental type");
         String rentalType = null;
         boolean check6 = true;
         do {
@@ -109,20 +109,20 @@ public class RoomService implements IAddService,IReadRoom {
                     check6 = false;
                     break;
                 default:
-                    System.out.println("Nhập sai, nhập lại");
+                    System.out.println("It is not available, please select again: ");
             }
         } while (check6);
-        System.out.print("Dịch vụ miễn phí đi kèm ");
+        System.out.print("Free service included: ");
         String serviceFree = scanner.nextLine();
         RoomModel roomModel = new RoomModel(serviceID, serviceName, area, price, maximumNumberPeople, rentalType, serviceFree);
         Integer value = 0;
-        roomRepository.addRoom(roomModel,value);
-        System.out.println("Đã thêm thành công!");
+        roomRepository.addRoom(roomModel, value);
+        System.out.println("Successfully added! ");
     }
 
     @Override
-    public Map<RoomModel, Integer> read() {
-        roomIntegerMap=roomRepository.readRoom();
+    public Map<RoomModel, Integer> readRoom() {
+        roomIntegerMap = roomRepository.readRoom();
         return roomIntegerMap;
     }
 }

@@ -4,22 +4,20 @@ public class BookingModel {
     private String codeClient;
     private String codeService;
     private String codeBooking;
+    private String dateBooking;
     private String dayStart;
     private String dayEnd;
-    private String nameService;
-    private String typeOfService;
 
     public BookingModel() {
     }
 
-    public BookingModel(String codeClient, String codeService, String codeBooking, String dayStart, String dayEnd, String nameService, String typeOfService) {
+    public BookingModel(String codeClient, String codeService, String dateBooking, String codeBooking, String dayStart, String dayEnd) {
         this.codeClient = codeClient;
         this.codeService = codeService;
-        this.codeBooking = codeBooking;
+        this.dateBooking = dateBooking;
         this.dayStart = dayStart;
         this.dayEnd = dayEnd;
-        this.nameService = nameService;
-        this.typeOfService = typeOfService;
+        this.codeBooking = codeBooking;
     }
 
     public String getCodeClient() {
@@ -36,6 +34,14 @@ public class BookingModel {
 
     public void setCodeService(String codeService) {
         this.codeService = codeService;
+    }
+
+    public String getDateBooking() {
+        return dateBooking;
+    }
+
+    public void setDateBooking(String dateBooking) {
+        this.dateBooking = dateBooking;
     }
 
     public String getCodeBooking() {
@@ -62,35 +68,18 @@ public class BookingModel {
         this.dayEnd = dayEnd;
     }
 
-    public String getNameService() {
-        return nameService;
-    }
-
-    public void setNameService(String nameService) {
-        this.nameService = nameService;
-    }
-
-    public String getTypeOfService() {
-        return typeOfService;
-    }
-
-    public void setTypeOfService(String typeOfService) {
-        this.typeOfService = typeOfService;
-    }
-
     @Override
     public String toString() {
-        return "Booking :" +
-                "codeClient: " + codeClient +
+        return "Booking : " +
+                "idClient: " + codeClient +
                 ", codeService: " + codeService +
-                ", codeBooking: " + codeBooking +
+                ", dateBooking: " + dateBooking +
+                ", codeBooking: " + dateBooking +
                 ", dayStart: " + dayStart +
-                ", dayEnd: " + dayEnd +
-                ", nameService: " + nameService +
-                ", typeOfService: " + typeOfService ;
+                ", dayEnd: " + dayEnd;
     }
 
     public String getInfoToCSV() {
-        return codeClient + "," + codeService + "," + codeBooking + "," + dayStart + "," + dayEnd + "," + nameService + "," + typeOfService;
+        return codeClient + "," + codeService + "," + dateBooking + "," + codeBooking + "," + dayStart + "," + dayEnd;
     }
 }

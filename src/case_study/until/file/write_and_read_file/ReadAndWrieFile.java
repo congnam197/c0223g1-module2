@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public  class ReadAndWrieFile {
+public class ReadAndWrieFile {
 
     public static List<String> readFile(String filePath) {
         List<String> stringList = new ArrayList<>();
@@ -38,7 +38,7 @@ public  class ReadAndWrieFile {
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter(file,append);
+            fileWriter = new FileWriter(file, append);
             bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(string);
             bufferedWriter.newLine();

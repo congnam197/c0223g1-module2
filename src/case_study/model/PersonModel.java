@@ -6,21 +6,20 @@ public abstract class PersonModel {
     private String name;
     private String dateOfBirth;
     private boolean gender;
-    private String identitCardNumber;
+    private String identityCardNumber;
     private String numberPhone;
     private String email;
-
 
     public PersonModel() {
     }
 
     public PersonModel(String id, String name, String dateOfBirth, boolean gender,
-                       String identitCardNumber, String numberPhone, String email) {
+                       String identityCardNumber, String numberPhone, String email) {
         this.code = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.identitCardNumber = identitCardNumber;
+        this.identityCardNumber = identityCardNumber;
         this.numberPhone = numberPhone;
         this.email = email;
     }
@@ -65,12 +64,12 @@ public abstract class PersonModel {
         this.email = email;
     }
 
-    public String getIdentitCardNumber() {
-        return identitCardNumber;
+    public String getIdentityCardNumber() {
+        return identityCardNumber;
     }
 
-    public void setIdentitCardNumber(String identitCardNumber) {
-        this.identitCardNumber = identitCardNumber;
+    public void setIdentityCardNumber(String identityCardNumber) {
+        this.identityCardNumber = identityCardNumber;
     }
 
     public String getNumberPhone() {
@@ -83,17 +82,21 @@ public abstract class PersonModel {
 
     @Override
     public String toString() {
+        String gender1;
+        if (gender) {
+            gender1 = "male";
+        } else {
+            gender1 = "female";
+        }
         return
-                "idCustomer :" + code +
-                        ", nameCustomer: " + name +
-                        ", dateOfBirth: " + dateOfBirth +
-                        ", identitCardNumber: " + identitCardNumber +
-                        ", numberPhone: " + numberPhone + COMMA;
+                "id:" + code + ", name: " + name + ", dateOfBirth: " + dateOfBirth + ", gender: " + gender1 +
+                        ", identityCardNumber: " + identityCardNumber + ", numberPhone: " + numberPhone +
+                        ", email: " + email + COMMA;
     }
 
     public String showList() {
         return code + COMMA + name + COMMA + dateOfBirth + COMMA + gender + COMMA +
-                identitCardNumber + COMMA + numberPhone + COMMA + email + COMMA;
+                identityCardNumber + COMMA + numberPhone + COMMA + email + COMMA;
     }
 }
 

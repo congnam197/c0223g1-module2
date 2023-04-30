@@ -2,6 +2,6 @@ package case_study.service;
 
 import java.util.Map;
 
-public interface IRead{
+public interface IReadService {
     void read();
 }

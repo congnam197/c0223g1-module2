@@ -33,9 +33,9 @@ public class HouseModel extends FacilityModel {
     @Override
     public String toString() {
         return "House: " +
-                super.toString() +
+                ", " + super.toString() +
                 ", roomStandard: " + roomStandard +
-                ", floor: " + floor ;
+                ", floor: " + floor;
     }
 
     public String getInfoToCSV() {
