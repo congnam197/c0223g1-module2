@@ -1,18 +1,20 @@
 package case_study.controller;
 
 import case_study.service.BookingService;
+import case_study.service.ContractService;
 
 import java.util.Scanner;
 
 public class BookingController {
     Scanner sc = new Scanner(System.in);
     BookingService bookingService = new BookingService();
+    ContractService contractService =new ContractService();
     public void bookingManagement() {
         System.out.println("-----Booking Management-----");
         boolean flag = true;
         do {
-            System.out.println("Chọn một trong những chức năng để tiếp tục");
-            System.out.println("Nhập một lựa chọn:\n" +
+            System.out.println("Choose a function to continue: ");
+            System.out.println("Enter an option :\n" +
                     "1. Add new booking \n" +
                     "2. Display list booking\n" +
                     "3. Create new contracts\n" +
@@ -25,16 +27,16 @@ public class BookingController {
                     break;
                 case "2":bookingService.display();
                     break;
-                case "3":
+                case "3":contractService.create();
                     break;
-                case "4":
+                case "4":contractService.display();
                     break;
                 case "5":
                     break;
                 case "6":
                     flag = false;
                 default:
-                    System.out.println("Không có chức năng!");
+                    System.out.print("It is not available, please select again:  ");
             }
         } while (flag);
     }

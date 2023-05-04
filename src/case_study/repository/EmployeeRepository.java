@@ -1,7 +1,7 @@
 package case_study.repository;
 
 import case_study.model.EmployeeModel;
-import case_study.until.file.write_and_read_file.ReadAndWrieFile;
+import case_study.until.file.write_and_read_file.ReadAndWriteFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,18 +12,18 @@ public class EmployeeRepository implements IEmployeeRepository {
     @Override
     public void add(EmployeeModel employeeModel) {
         String string = employeeModel.getInfoToCSV();
-        ReadAndWrieFile.writeFile(NAME_FILE, string, true);
+        ReadAndWriteFile.writeFile(NAME_FILE, string, true);
     }
 
     @Override
     public void edit(EmployeeModel employeeModel, int index) {
-        List<String> stringList = ReadAndWrieFile.readFile(NAME_FILE);
+        List<String> stringList = ReadAndWriteFile.readFile(NAME_FILE);
         stringList.set(index, employeeModel.getInfoToCSV());
         for (int i = 0; i < stringList.size(); i++) {
             if (i == 0) {
-                ReadAndWrieFile.writeFile(NAME_FILE, stringList.get(i), false);
+                ReadAndWriteFile.writeFile(NAME_FILE, stringList.get(i), false);
             } else {
-                ReadAndWrieFile.writeFile(NAME_FILE, stringList.get(i), true);
+                ReadAndWriteFile.writeFile(NAME_FILE, stringList.get(i), true);
             }
         }
     }
@@ -31,7 +31,7 @@ public class EmployeeRepository implements IEmployeeRepository {
     @Override
     public List<EmployeeModel> getEmployee() {
         List<EmployeeModel> employeeModelList = new ArrayList<>();
-        List<String> stringList = ReadAndWrieFile.readFile(NAME_FILE);
+        List<String> stringList = ReadAndWriteFile.readFile(NAME_FILE);
         for (int i = 0; i < stringList.size(); i++) {
             String[] arr = stringList.get(i).split(",");
             employeeModelList.add(new EmployeeModel(arr[0], arr[1], arr[2], Boolean.parseBoolean(arr[3]), arr[4],

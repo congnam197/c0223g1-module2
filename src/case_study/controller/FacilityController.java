@@ -12,12 +12,12 @@ public class FacilityController {
         System.out.println("-----Facility Management-----");
         boolean flag = true;
         do {
-            System.out.println("Chọn một trong những chức năng để tiếp tục");
-            System.out.println("Nhập một lựa chọn:\n" +
+            System.out.println("Choose a function to continue: ");
+            System.out.print("Enter an option :\n" +
                     "1. Display list facility\n" +
                     "2. Add new facility\n" +
-                    "3. Dislay list facility maintenance\n" +
-                    "4. Return main menu");
+                    "3. Display list facility maintenance\n" +
+                    "4. Return main menu ");
             String choice3 = sc.nextLine();
             switch (choice3) {
                 case "1":
@@ -33,7 +33,7 @@ public class FacilityController {
                     flag = false;
                     break;
                 default:
-                    System.out.println("Không có chức năng chọn");
+                    System.out.print("It is not available, please select again:  ");
             }
         } while (flag);
     }

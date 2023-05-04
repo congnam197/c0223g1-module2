@@ -1,7 +1,7 @@
 package case_study.repository;
 
 import case_study.model.RoomModel;
-import case_study.until.file.write_and_read_file.ReadAndWrieFile;
+import case_study.until.file.write_and_read_file.ReadAndWriteFile;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -13,13 +13,13 @@ public class RoomRepository implements IRoomRepository {
     @Override
     public void addRoom(RoomModel roomModel, Integer value) {
         String string = roomModel.getInfoToCSV() + "," + value;
-        ReadAndWrieFile.writeFile(FILE_PATH, string, true);
+        ReadAndWriteFile.writeFile(FILE_PATH, string, true);
     }
 
     @Override
     public Map<RoomModel, Integer> readRoom() {
         Map<RoomModel, Integer> roomIntegerMap = new LinkedHashMap<>();
-        List<String> stringList = ReadAndWrieFile.readFile(FILE_PATH);
+        List<String> stringList = ReadAndWriteFile.readFile(FILE_PATH);
         int size = stringList.size();
         for (int i = 0; i < size; i++) {
             String[] arr = stringList.get(i).split(",");

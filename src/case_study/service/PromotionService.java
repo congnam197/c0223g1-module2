@@ -1,13 +1,9 @@
 package case_study.service;
 
-public class PromotionService implements IDisplayService, IAddService {
+public class PromotionService implements IDisplayService {
     @Override
     public void display() {
 
     }
 
-    @Override
-    public void add() {
-
-    }
 }

@@ -1,19 +1,19 @@
 package case_study.model;
 
-public class ContractModel {
+public class ContractModel{
     private int numberContract;
     private String codeBooking;
-    private int advanceDepositAmount;
+    private int depositAmount;
     private int totalPaymentAmount;
     private String codeClient;
 
     public ContractModel() {
     }
 
-    public ContractModel(int numberContract, String codeBooking, int advanceDepositAmount, int totalPaymentAmount, String codeClient) {
+    public ContractModel(int numberContract, String codeBooking, int depositAmount, int totalPaymentAmount, String codeClient) {
         this.numberContract = numberContract;
         this.codeBooking = codeBooking;
-        this.advanceDepositAmount = advanceDepositAmount;
+        this.depositAmount = depositAmount;
         this.totalPaymentAmount = totalPaymentAmount;
         this.codeClient = codeClient;
     }
@@ -34,12 +34,12 @@ public class ContractModel {
         this.codeBooking = codeBooking;
     }
 
-    public int getAdvanceDepositAmount() {
-        return advanceDepositAmount;
+    public int getDepositAmount() {
+        return depositAmount;
     }
 
-    public void setAdvanceDepositAmount(int advanceDepositAmount) {
-        this.advanceDepositAmount = advanceDepositAmount;
+    public void setDepositAmount(int depositAmount) {
+        this.depositAmount = depositAmount;
     }
 
     public int getTotalPaymentAmount() {
@@ -63,12 +63,13 @@ public class ContractModel {
         return "Contract: " +
                 "numberContract: " + numberContract +
                 ", codeBooking: " + codeBooking +
-                ", advanceDepositAmount: " + advanceDepositAmount +
+                ", advanceDepositAmount: " + depositAmount +
                 ", totalPaymentAmount: " + totalPaymentAmount +
                 ", codeClient: " + codeClient;
     }
 
     public String getInfoToCSV() {
-        return numberContract + "," + codeBooking + "," + advanceDepositAmount + "," + totalPaymentAmount + "," + codeClient;
+        return numberContract + "," + codeBooking + "," + depositAmount + "," + totalPaymentAmount + "," + codeClient;
     }
+
 }

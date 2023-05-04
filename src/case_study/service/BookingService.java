@@ -19,7 +19,8 @@ public class BookingService implements IBookingService, IReturnBookingService {
 
     @Override
     public void add() {
-        System.out.print("Enter the code client (KH-XXXX)  ");
+        System.out.println("Enter the code client (KH-XXXX)  ");
+        customerService.display();
         String codeClient;
         boolean flag = true;
         do {
@@ -34,15 +35,15 @@ public class BookingService implements IBookingService, IReturnBookingService {
                 System.out.print("You entered it wrong, please re-enter  ");
             }
         } while (flag);
-        System.out.print("Enter the code service  ");
+        System.out.println("Enter the code service  ");
         facilityService.display();
-        String codeService;
+        String idService;
         boolean flag1 = true;
         do {
-            codeService = scanner.nextLine();
+            idService = scanner.nextLine();
             Set<FacilityModel> facilitySet = facilityIntegerMap.keySet();
             for (FacilityModel x : facilitySet) {
-                if (codeService.equals(x.getServiceId())) {
+                if (idService.equals(x.getServiceId())) {
                     flag1 = false;
                     break;
                 }
@@ -116,9 +117,9 @@ public class BookingService implements IBookingService, IReturnBookingService {
                 System.out.print("You entered it wrong, please re-enter ");
             }
         } while (flag5);
-        BookingModel booking = new BookingModel(codeClient, codeService, codeBooking, dateBooking, dayStart, dayEnd);
+        BookingModel booking = new BookingModel(codeClient, idService, codeBooking, dateBooking, dayStart, dayEnd);
         bookingRepository.add(booking);
-        bookingRepository.countValue(codeService);
+        bookingRepository.countValue(idService);
         System.out.println("successfully added new");
     }
 

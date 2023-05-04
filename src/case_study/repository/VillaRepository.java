@@ -1,7 +1,7 @@
 package case_study.repository;
 
 import case_study.model.VillaModel;
-import case_study.until.file.write_and_read_file.ReadAndWrieFile;
+import case_study.until.file.write_and_read_file.ReadAndWriteFile;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -13,13 +13,13 @@ public class VillaRepository implements IVillaRepository {
     @Override
     public void addVillaRepository(VillaModel villaModel, Integer value) {
         String string = villaModel.getInfoToCSV() + "," + value;
-        ReadAndWrieFile.writeFile(FILE_PATH, string, true);
+        ReadAndWriteFile.writeFile(FILE_PATH, string, true);
     }
 
     @Override
     public Map<VillaModel, Integer> readVillaRepository() {
         Map<VillaModel, Integer> villaIntegerMap = new LinkedHashMap<>();
-        List<String> stringList = ReadAndWrieFile.readFile(FILE_PATH);
+        List<String> stringList = ReadAndWriteFile.readFile(FILE_PATH);
         int size = stringList.size();
         for (int i = 0; i < size; i++) {
             String[] arr = stringList.get(i).split(",");

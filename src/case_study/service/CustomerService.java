@@ -306,7 +306,7 @@ public class CustomerService implements IService {
                             check6 = false;
                             break;
                         default:
-                            System.out.print("It is not available, please select again:  ");
+                                System.out.print("It is not available, please select again:  ");
                             check6 = true;
                     }
                 } while (check6);

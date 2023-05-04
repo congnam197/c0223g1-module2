@@ -11,8 +11,8 @@ public class EmployeeController {
         System.out.println("-----Employee Management-----");
         boolean flag = true;
         do {
-            System.out.println("Chọn một trong những chức năng sau để tiếp tục");
-            System.out.println("Nhập một lựa chọn: \n" +
+            System.out.println("Choose a function to continue: ");
+            System.out.println("Enter an option :\n" +
                     "1. Display list employees\n" +
                     "2. Add new employee\n" +
                     "3. Edit employee\n" +
@@ -32,7 +32,7 @@ public class EmployeeController {
                     flag = false;
                     break;
                 default:
-                    System.out.println("Không có chức năng chọn");
+                    System.out.print("It is not available, please select again:  ");
             }
         } while (flag);
     }

@@ -1,7 +1,7 @@
 package case_study.repository;
 
 import case_study.model.HouseModel;
-import case_study.until.file.write_and_read_file.ReadAndWrieFile;
+import case_study.until.file.write_and_read_file.ReadAndWriteFile;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -13,13 +13,13 @@ public class HouseRepository implements IHouseRepository {
     @Override
     public void addHouse(HouseModel houseModel, Integer value) {
         String string = houseModel.getInfoToCSV() + "," + value;
-        ReadAndWrieFile.writeFile(FILE_HOUSE, string, true);
+        ReadAndWriteFile.writeFile(FILE_HOUSE, string, true);
     }
 
     @Override
     public Map<HouseModel, Integer> readHouse() {
         Map<HouseModel, Integer> houseIntegerMap = new LinkedHashMap<>();
-        List<String> stringList = ReadAndWrieFile.readFile(FILE_HOUSE);
+        List<String> stringList = ReadAndWriteFile.readFile(FILE_HOUSE);
         int size = stringList.size();
         for (int i = 0; i < size; i++) {
             String[] arr = stringList.get(i).split(",");

@@ -11,10 +11,10 @@ PromotionService promotionService = new PromotionService();
         System.out.println("-----Promotion Management-----");
         boolean flag = true;
         do {
-            System.out.println("Nhập một lựa chọn \n" +
+            System.out.print("Enter an option : \n" +
                     "1. Display list customers use service\n" +
                     "3. Display list customers get voucher \n" +
-                    "3. Return main menu");
+                    "3. Return main menu:  ");
             String choice5 = sc.nextLine();
             switch (choice5) {
                 case "1":
@@ -24,7 +24,7 @@ PromotionService promotionService = new PromotionService();
                 case "3":
                     flag = false;
                 default:
-                    System.out.println("Không có chức năng!");
+                    System.out.print("It is not available, please select again:  ");
             }
         } while (flag);
     }

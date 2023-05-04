@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadAndWrieFile {
+public class ReadAndWriteFile {
 
     public static List<String> readFile(String filePath) {
         List<String> stringList = new ArrayList<>();
