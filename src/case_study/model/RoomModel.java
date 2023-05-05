@@ -21,7 +21,7 @@ public class RoomModel extends FacilityModel {
 
     @Override
     public String toString() {
-        return "Room: " + ", " +
+        return "Room: " +
                 super.toString() + ", serviceFree: " + serviceFree;
     }
 

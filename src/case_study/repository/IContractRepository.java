@@ -8,4 +8,5 @@ public interface IContractRepository {
     void add(ContractModel contractModel);
 
     TreeSet<ContractModel> read();
+    void edit(ContractModel contract,int index);
 }

@@ -1,7 +1,11 @@
 package case_study.model;
 
-public class BookingModel {
-    private String codeClient;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class BookingModel implements Comparable<BookingModel> {
+    private String idClient;
     private String codeService;
     private String codeBooking;
     private String dateBooking;
@@ -11,8 +15,8 @@ public class BookingModel {
     public BookingModel() {
     }
 
-    public BookingModel(String codeClient, String codeService, String dateBooking, String codeBooking, String dayStart, String dayEnd) {
-        this.codeClient = codeClient;
+    public BookingModel(String idClient, String codeService, String codeBooking, String dateBooking, String dayStart, String dayEnd) {
+        this.idClient = idClient;
         this.codeService = codeService;
         this.dateBooking = dateBooking;
         this.dayStart = dayStart;
@@ -20,12 +24,12 @@ public class BookingModel {
         this.codeBooking = codeBooking;
     }
 
-    public String getCodeClient() {
-        return codeClient;
+    public String getIdClient() {
+        return idClient;
     }
 
-    public void setCodeClient(String codeClient) {
-        this.codeClient = codeClient;
+    public void setIdClient(String idClient) {
+        this.idClient = idClient;
     }
 
     public String getCodeService() {
@@ -36,6 +40,12 @@ public class BookingModel {
         this.codeService = codeService;
     }
 
+    public String getCodeBooking() {
+        return codeBooking;
+    }
+    public void setCodeBooking(String codeBooking) {
+        this.codeBooking = codeBooking;
+    }
     public String getDateBooking() {
         return dateBooking;
     }
@@ -43,15 +53,6 @@ public class BookingModel {
     public void setDateBooking(String dateBooking) {
         this.dateBooking = dateBooking;
     }
-
-    public String getCodeBooking() {
-        return codeBooking;
-    }
-
-    public void setCodeBooking(String codeBooking) {
-        this.codeBooking = codeBooking;
-    }
-
     public String getDayStart() {
         return dayStart;
     }
@@ -71,15 +72,38 @@ public class BookingModel {
     @Override
     public String toString() {
         return "Booking : " +
-                "idClient: " + codeClient +
+                "idClient: " + idClient +
                 ", codeService: " + codeService +
+                ", codeBooking: " + codeBooking +
                 ", dateBooking: " + dateBooking +
-                ", codeBooking: " + dateBooking +
                 ", dayStart: " + dayStart +
                 ", dayEnd: " + dayEnd;
     }
 
     public String getInfoToCSV() {
-        return codeClient + "," + codeService + "," + dateBooking + "," + codeBooking + "," + dayStart + "," + dayEnd;
+        return idClient + "," + codeService + "," + codeBooking + "," + dateBooking+ "," + dayStart + "," + dayEnd;
+    }
+
+    @Override
+    public int compareTo(BookingModel o) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyy");
+        Date dateStart = null;
+        Date dateStartO = null;
+        Date dateEnd = null;
+        Date dateEndO = null;
+        try {
+            dateStart = sdf.parse(this.dayStart);
+            dateStartO = sdf.parse(o.dayStart);
+            dateEnd = sdf.parse(this.dayEnd);
+            dateEndO = sdf.parse(o.dayEnd);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if (this.dayStart.equals(o.dayStart)) {
+            return dateEndO.after(dateEnd) ? 1 : -1;
+
+        } else {
+            return dateStartO.after(dateStart) ? 1 : -1;
+        }
     }
 }

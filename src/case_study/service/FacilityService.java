@@ -87,9 +87,6 @@ public class FacilityService implements IAddService, IDisplayService, IDisplayMa
         Set<FacilityModel> setList = facilityIntegerMap.keySet();
         for (FacilityModel f : setList) {
             System.out.println(f + ", Number of bookings: " + facilityIntegerMap.get(f));
-            if (facilityIntegerMap.get(f) > 4) {
-                maintenanceMap.put(f, facilityIntegerMap.get(f));
-            }
         }
     }
 
@@ -104,7 +101,8 @@ public class FacilityService implements IAddService, IDisplayService, IDisplayMa
         }
         Set<FacilityModel> set1 = maintenanceMap.keySet();
         for (FacilityModel facilityModel : set1) {
-            System.out.println(facilityModel + " Number of bookings: " + maintenanceMap.get(facilityModel));
+            System.out.println("Facility Maintenance: ");
+            System.out.println(facilityModel+ " Number of bookings: " + maintenanceMap.get(facilityModel));
         }
     }
 }

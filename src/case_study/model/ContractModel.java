@@ -1,21 +1,19 @@
 package case_study.model;
 
-public class ContractModel{
+public class ContractModel implements Comparable<ContractModel> {
     private int numberContract;
     private String codeBooking;
     private int depositAmount;
     private int totalPaymentAmount;
-    private String codeClient;
 
     public ContractModel() {
     }
 
-    public ContractModel(int numberContract, String codeBooking, int depositAmount, int totalPaymentAmount, String codeClient) {
+    public ContractModel(int numberContract, String codeBooking, int depositAmount, int totalPaymentAmount) {
         this.numberContract = numberContract;
         this.codeBooking = codeBooking;
         this.depositAmount = depositAmount;
         this.totalPaymentAmount = totalPaymentAmount;
-        this.codeClient = codeClient;
     }
 
     public int getNumberContract() {
@@ -50,26 +48,22 @@ public class ContractModel{
         this.totalPaymentAmount = totalPaymentAmount;
     }
 
-    public String getCodeClient() {
-        return codeClient;
-    }
-
-    public void setCodeClient(String codeClient) {
-        this.codeClient = codeClient;
-    }
-
     @Override
     public String toString() {
         return "Contract: " +
                 "numberContract: " + numberContract +
                 ", codeBooking: " + codeBooking +
                 ", advanceDepositAmount: " + depositAmount +
-                ", totalPaymentAmount: " + totalPaymentAmount +
-                ", codeClient: " + codeClient;
+                ", totalPaymentAmount: " + totalPaymentAmount;
+
     }
 
     public String getInfoToCSV() {
-        return numberContract + "," + codeBooking + "," + depositAmount + "," + totalPaymentAmount + "," + codeClient;
+        return numberContract + "," + codeBooking + "," + depositAmount + "," + totalPaymentAmount;
     }
 
+    @Override
+    public int compareTo(ContractModel o) {
+        return this.numberContract - (o.numberContract);
+    }
 }

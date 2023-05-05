@@ -14,12 +14,10 @@ public class ReadAndWriteFile {
         try {
             fileReader = new FileReader(file);
             bufferedReader = new BufferedReader(fileReader);
-            String line = "";
+            String line ;
             while ((line = bufferedReader.readLine()) != null) {
                 stringList.add(line);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

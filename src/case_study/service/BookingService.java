@@ -126,7 +126,9 @@ public class BookingService implements IBookingService, IReturnBookingService {
     @Override
     public void display() {
         read();
-        System.out.println(bookingTreeSet);
+        for (BookingModel booking:bookingTreeSet) {
+            System.out.println(booking);
+        }
     }
 
     @Override
