@@ -1,6 +1,6 @@
 package case_study.controller;
 
-import case_study.service.FacilityService;
+import case_study.service.class_service.FacilityService;
 
 import java.util.Scanner;
 

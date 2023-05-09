@@ -1,7 +1,7 @@
 package case_study.controller;
 
-import case_study.service.BookingService;
-import case_study.service.ContractService;
+import case_study.service.class_service.BookingService;
+import case_study.service.class_service.ContractService;
 
 import java.util.Scanner;
 

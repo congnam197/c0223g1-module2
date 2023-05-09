@@ -1,6 +1,6 @@
 package case_study.controller;
 
-import case_study.service.CustomerService;
+import case_study.service.class_service.CustomerService;
 
 import java.util.Scanner;
 
